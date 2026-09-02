@@ -1,0 +1,188 @@
+.nav-full{
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    
+    @media screen and (max-width: $sm){
+        border: none;
+    }
+}
+
+.horizontal-nav{
+    position: relative;
+    z-index: 20;
+    
+    .level1{
+        height: 50px;
+        position: relative;
+    }
+    
+    .level2{
+        background: #fff;
+        border-bottom: 19px solid #e42754;
+        box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.18);
+        display: none;
+        left: 0;
+        min-width: 100%;
+        position: absolute;
+    }
+    
+    .level3{
+        background: #fff;
+        box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.18);
+        display: none;
+        left: 100%;
+        position: absolute;
+        top: 0;
+    }
+    
+    .level4{
+        background: #fff;
+        box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.18);
+        display: none;
+        left: 100%;
+        position: absolute;
+        top: 0;
+    }
+    
+    .item-level1{
+        height: 100%;
+        position: relative;
+        
+        &:hover{
+            background: #fff;
+            
+            .level2{
+                display: block;
+            }
+            
+            .link-level1{
+                color: #e42754;
+            }
+            
+            .link-level1 span:after{
+                border-top: 5px solid #e42754;
+            }
+        }
+        
+        &.sub-left{
+             
+            .level2{
+                left: auto;
+                right: 0;
+            }
+            
+            .level3{
+                box-shadow: -1px 2px 2px 0 rgba(0, 0, 0, 0.18);
+                left: auto;
+                right: 100%;
+            }
+            
+            .level4{
+                left: auto;
+                position: absolute;
+                top: 0;
+                right: 100%;
+            }
+        }
+    }
+    
+    .item-level2{
+        position: relative;
+        
+        &:hover{
+            
+            .level3{
+                display: block;
+            }
+            
+            .link-level2{
+                background: #f1f1f1;
+                text-decoration: none;
+            }
+        }
+    }
+    
+    .item-level3{
+        position: relative;
+        
+        &:hover{
+            
+            .level4{
+                display: block;
+            }
+            
+            .link-level3{
+                background: #f1f1f1;
+                text-decoration: none;
+            }
+        }
+    }
+    
+    .link-level1{
+        color: #434343;
+        display: block;
+        font-size: 0;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        
+        &:hover{
+            text-decoration: none;
+        }
+        
+        span{
+            display: inline-block;
+            max-width: 97%;
+            padding-right: 10px;
+            vertical-align: middle;
+                
+            @include typo(1.4rem, 400, $font, 1.6rem);
+            
+            &:after {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid #000;
+                content: "";
+                position: absolute;
+                right: 0;
+                top: calc(50% - 2.5px);
+            }
+        }
+        
+        &:before{
+            content: '';
+            display: inline-block;
+            height: 50px;
+            vertical-align: middle;
+            width: 1%;
+        }
+    }
+    
+    .link-level2{
+        color: #666;
+        display: block;
+        padding: 10px 30px;
+        white-space: nowrap;
+        @include typo(1.3rem, 400, $font, 1.5rem);
+        
+        &:hover{
+            background: #f1f1f1;
+            text-decoration: none;
+        }
+    }
+    
+    .link-level3,
+    .link-level4{
+        color: #666;
+        display: block;
+        padding: 10px 30px;
+        white-space: nowrap;
+        @include typo(1.3rem, 400, $font, 1.5rem);
+        
+        &:hover{
+            background: #f1f1f1;
+            text-decoration: none;
+        }
+    }
+}

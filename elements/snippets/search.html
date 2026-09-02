@@ -1,0 +1,11 @@
+<div class="search search-1">
+    <form role="form" action="{{ links.search }}" method="get" data-search="suggestion" data-tray-tst="form_busca">
+        <input type="hidden" name="loja" value="{{ store.id }}">
+        <button class="search-button pull-right" type="submit" tabindex="2" data-tray-tst="botao_buscar">
+            <svg version="1.1" fill="#a2a2a2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16" height="16" viewBox="0 0 425.2 425.199" enable-background="new 0 0 425.2 425.199" xml:space="preserve"><g id="Search"><path d="M414.792,364.542l-92.371-92.37c-0.49-0.491-1.066-0.834-1.58-1.291c18.176-27.571,28.785-60.575,28.785-96.067C349.624,78.267,271.358,0,174.812,0C78.267,0,0,78.267,0,174.812s78.265,174.813,174.811,174.813c35.494,0,68.496-10.608,96.067-28.784c0.457,0.512,0.799,1.088,1.289,1.578l92.375,92.374c13.875,13.875,36.373,13.875,50.25,0C428.667,400.916,428.667,378.418,414.792,364.542z M174.812,289.023c-63.078,0-114.212-51.134-114.212-114.211C60.6,111.734,111.735,60.6,174.812,60.6c63.075,0,114.21,51.136,114.21,114.212C289.022,237.889,237.887,289.023,174.812,289.023z"/></g></svg>
+        </button>
+        <div>
+            <input class="search-key" type="text" placeholder="Busca" name="palavra_busca" data-input="suggestion" tabindex="1" data-tray-tst="busca_palavra" required>
+        </div>
+    </form> 
+</div>

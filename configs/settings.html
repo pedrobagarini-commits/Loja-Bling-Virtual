@@ -1,0 +1,1635 @@
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://images.tcdn.com.br/491223/themes/283/configs/uikit.min.css" />
+
+<style type="text/css">
+    html {
+        scroll-behavior: smooth;
+    }
+    .uk-tile-primary {
+        background: #889aad;
+    }
+    .img-thumbnail{
+        max-height: 320px;
+        margin-bottom: 10px;
+        width: auto !important;
+        border-radius: 0;
+    }
+    .ls-input-text, input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], textarea{
+        max-width: 100%;
+        width: 100%;
+        border: 0 none;
+        border-radius: 0;
+        padding: 0 10px;
+        background: #fff;
+        color: #666;
+        border: 1px solid #e5e5e5;
+        -webkit-transition: .2s ease-in-out;
+        transition: .2s ease-in-out;
+        -webkit-transition-property: color,background-color,border;
+        transition-property: color,background-color,border;
+    }
+    .ls-md-space.col-md-8{
+        width: 100%;
+    }
+    .ls-dropdown-nav {
+        right: 0;
+        padding-left: 0;
+    }
+    input[type="radio"], input[type="checkbox"]{
+        margin: 0;
+        vertical-align: text-bottom;
+    }
+    .f-400{
+        font-weight: 400;
+    }
+    .input-group-addon{
+        border: 1px solid #e0e0e0;
+        border-radius: 0;
+    }
+    .uk-link:hover, a:hover, a{
+        text-decoration: none;
+    }
+    .check-switcher {
+        display: none;
+    }
+    .check-switcher + label {
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+        position: relative;
+        transition: 0.3s;
+        box-sizing: border-box;
+    }
+    .check-switcher + label:after,
+    .check-switcher + label:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 30px;
+        height: 30px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .check-switcher:checked + label.red {
+      background: #ECA9A7;
+    }
+    .check-switcher:checked + label.red:after {
+      background: #D9534F;
+    }
+    .check-switcher:checked + label.green {
+      background: #AEDCAE;
+    }
+    .check-switcher:checked + label.green:after {
+      background: #5CB85C;
+    }
+    .check-switcher:checked + label:active:after {
+      left: calc(100% - 38px);
+    }
+    .check-switcher:checked + label:after {
+      left: calc(100% - 28px);
+    }
+    .check-switcher + label {
+      background: #ddd;
+      border-radius: 20px;
+      margin: 0;
+    }
+    .check-switcher + label:active:after {
+      width: 36px;
+    }
+    .check-switcher + label:after {
+      background: #fff;
+      border-radius: 20px;
+      width: 26px;
+      height: 26px;
+      top: 2px;
+      left: 2px;
+    }
+    .enable-panel {
+        margin: 10px 0;
+        border-radius: 10px;
+        background: #f9f9f9;
+        padding: 10px 30px;
+        box-shadow: 0px 1px 0px #eee;
+    }
+    .label-panel {
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .title-panel {
+        margin: 0;
+    }
+    .editor-center {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .editor-content {
+        padding: 80px 10px;
+        background-color: #f5f5f5;
+    }
+    .editor-main {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px #eee;
+        padding: 20px 150px;
+    }
+    .uk-tab {
+        margin-bottom: 50px;
+    }
+    .editor-item {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .editor-field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 25px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        height: 50px;
+    }
+    .editor-field:hover .editor-icon svg {
+        fill: #383838;
+    }
+    .editor-field.change {
+        flex-wrap: wrap;
+        padding: 10px 0;
+        height: auto;
+    }
+    .editor-section-title {
+        font-size: 24px;
+        text-align: center;
+        margin: 35px 0 15px;
+    }
+    .editor-icon {
+        order: 1;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    .editor-icon svg {
+        transition: all .4s;
+    }
+    .editor-input {
+        order: 2;
+        box-shadow: none !important;
+        border: none !important;
+        height: 100%;
+        display: inline-block;
+        font-size: 14px !important;
+        border-radius: 5px !important;
+    }
+    .editor-input::placeholder {
+        color: #dadada;
+    }
+
+    .editor-input:focus + .editor-icon svg {
+        fill: #383838;
+    }
+    .editor-explanation {
+        color: #aaa;
+        margin: 5px;
+    }
+    .editor-label {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 0 35px;
+    }
+    .editor-label h5 {
+        margin: 0;
+    }
+    .editor-switcher-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .editor-tip {
+        display: block;
+        width: 100%;
+        padding: 0 35px;
+        margin: 0;
+        color: #999;
+    }
+    .btn-remove {
+        z-index: 10;
+        position: absolute;
+        margin: 0 5px;
+    }
+    .editor-navigation {
+        position: fixed;
+        top: 50%;
+        right: -45px;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-50%);
+        opacity: 1;
+        transition: all .3s;
+        visibility: hidden;
+    }
+    .editor-navigation.reveal {
+        right: 0;
+        visibility: visible;
+    }
+    .editor-navigation-link {
+        display: block;
+        background-color: #2D3237;
+        color: #fff;
+        font-weight: 700;
+        padding: 10px;
+        font-size: 12px;
+        transition: all .2s;
+        white-space: nowrap;
+        transform: translateX(125px);
+        width: 170px;
+    }
+    .editor-navigation-link:first-child {
+        border-radius: 3px 0 0 0;
+    }
+    .editor-navigation-link:last-child {
+        border-radius: 0 0 0 3px;
+    }
+    .editor-navigation-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    .editor-navigation-text {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    .editor-navigation-link:hover {
+        color: #0EA5DE;
+        transform: translateX(0);
+        border-left: 3px solid #0EA5DE;
+        background-color: #3C4146;
+    }
+    .editor-navigation-link:hover .editor-navigation-icon{
+        fill: #0EA5DE;
+    }
+
+
+    /* message alert */
+    .ls-alert-fixed-top {
+        position: fixed;
+        width: 50% !important;
+        height: 50%;
+        z-index: 9999;
+        padding: 0;
+        border: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+
+        animation: bounceIn 0.75s;
+    }
+
+    .ls-alert-success {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        font-size: 28px;
+        border-radius: 10px;
+        margin: 0;
+        box-shadow: 0px 2px 5px 0 #cccccc;
+    }
+
+    .ls-alert-success > div strong {
+        display: block;
+        text-align: center;
+        font-size: 28px;
+        line-height: 0;
+    }
+    .ls-alert-success > div span {
+        font-size: 18px;
+        padding: 0;
+        line-height: 0;
+        margin: 0;
+    }
+
+    /* message error */
+    .ls-alert-danger {
+        color: #d75553;
+        border-color: #e5908f;
+        background-color: #f7dddc;
+        position: fixed;
+        width: 50% !important;
+        height: 50%;
+        z-index: 9999;
+        padding: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        animation: bounceIn 0.75s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        font-size: 28px;
+        border-radius: 10px;
+        margin: 0;
+        box-shadow: 0px 2px 5px 0 #cccccc;
+    }
+
+    #close-message {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        background: #f1f1f1;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 50%;
+        opacity: 1;
+        font-size: 24px;
+        color: #2c2c2c;
+        box-shadow: 0 1px 0 0 #cccccc;
+    }
+
+    /* Buttons save bar*/
+    .ls-float-right.ls-no-padding-right {
+        position: fixed;
+        bottom: -55px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(255,255,255,0.6);
+        box-shadow: 0px 3px 4px 1px #777;
+        z-index: 10;
+        animation: revealFromBottom .8s 3s cubic-bezier(0.62, 0.09, 0.86, 1.12) forwards;
+    }
+
+    #btn-cancel {
+        background-color: #E54B65;
+        color: #fff !important;
+        border: none;
+        width: 100px;
+        font-size: 14px;
+    }
+
+    #btn-customize-preview {
+        background-color: #1AA8AA;
+        color: #fff !important;
+        border: none;
+        width: 100px;
+        font-size: 14px;
+    }
+
+    #btn-customize-save {
+        background-color: #224B92;
+        color: #fff !important;
+        border: none;
+        width: 100px;
+        font-size: 14px;
+        text-align: center !important;
+    }
+
+    #notice ~ .row .col-md-4,
+    .ls-label {
+        display: none;
+    }
+
+    .theme-info {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+    }
+
+    .theme-info-block {
+        display: block;
+        margin: 0 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .theme-info-text {
+        display: block;
+        margin: 0;
+        padding: 5px 0;
+        text-decoration: none;
+        color: #2c2c2c;
+    }
+
+    .theme-info-block.hover:hover .theme-info-hover {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .theme-info-block.hover {
+        position: relative;
+    }
+
+    .theme-info-hover {
+        text-align: left;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s;
+        background-color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        right: 100%;
+        width: 200px;
+        margin-right: 10px;
+    }
+
+    @keyframes revealFromBottom {
+        to {
+            visibility: visible;
+            opacity: 1;
+            bottom: 0;
+        }
+      }
+
+    @keyframes bounceIn {
+        from,
+        20%,
+        40%,
+        60%,
+        80%,
+        to {
+          -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        0% {
+          opacity: 0;
+          -webkit-transform: translate(-50%,-50%) scale3d(0.3, 0.3, 0.3);
+          transform: translate(-50%,-50%) scale3d(0.3, 0.3, 0.3);
+        }
+
+        20% {
+          -webkit-transform: translate(-50%,-50%) scale3d(1.1, 1.1, 1.1);
+          transform: translate(-50%,-50%) scale3d(1.1, 1.1, 1.1);
+        }
+
+        40% {
+          -webkit-transform: translate(-50%,-50%) scale3d(0.9, 0.9, 0.9);
+          transform: translate(-50%,-50%) scale3d(0.9, 0.9, 0.9);
+        }
+
+        60% {
+          opacity: 1;
+          -webkit-transform: translate(-50%,-50%) scale3d(1.03, 1.03, 1.03);
+          transform: translate(-50%,-50%) scale3d(1.03, 1.03, 1.03);
+        }
+
+        80% {
+          -webkit-transform: translate(-50%,-50%) scale3d(0.97, 0.97, 0.97);
+          transform: translate(-50%,-50%) scale3d(0.97, 0.97, 0.97);
+        }
+
+        to {
+          opacity: 1;
+          -webkit-transform: translate(-50%,-50%) scale3d(1, 1, 1);
+          transform: translate(-50%,-50%) scale3d(1, 1, 1);
+        }
+      }
+</style>
+
+<fieldset class="editor-body">
+    <div class="editor-content">
+        <div class="editor-center">
+            <div class="theme-info">
+                <div class="theme-info-block hover">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512"><g fill="#ccc"><path d="M285.172 331.453c-12.453 13.25-20.547 18.781-26.094 18.781-3.859 0-5.172-3.422-4.312-11.142 2.593-20.062 17.531-84.578 21.781-107.625 4.266-19.719 3-29.953-2.562-29.953-10.641 0-36.733 17.516-53.827 35.016-.875 1.344-2.562 8.578-1.688 11.125 0 .875 1.266 1.312 1.266 1.312 10.266-8.125 18.391-12.844 23.109-12.844 2.109 0 2.938 3.406 1.688 9.406-5.125 25.625-13.672 65.405-20.078 98.28-5.984 28.672-2.172 40.188 6.812 40.188s33.766-11.983 53.906-38.906c.812-2.094 1.641-10.188 1.25-12.358-.001-.827-1.251-1.28-1.251-1.28zM281.281 128c-7.297 0-16.25 3.414-20.516 7.703-1.688 2.141-3.406 8.539-3.859 11.945.453 7.711 2.578 11.984 6.859 14.562 2.108 1.68 16.219.414 19.219-1.312 5.188-3.398 9.828-10.25 10.703-18.375.375-3.82-.438-8.984-2.142-11.531-.857-1.273-4.295-2.992-10.264-2.992z"/><path d="M256 0C114.609 0 0 114.609 0 256c0 141.391 114.609 256 256 256 141.391 0 256-114.609 256-256C512 114.609 397.391 0 256 0zm0 472c-119.297 0-216-96.703-216-216S136.703 40 256 40s216 96.703 216 216-96.703 216-216 216z"/></g></svg>
+                    <p class="theme-info-text">Informações do tema</p>
+
+                    <div class="theme-info-hover">
+                        <p style="margin: 0;"><strong>Tema:</strong> Perfumaria</p>
+                        <p style="margin: 0;"> <strong>Versão:</strong> 8.8.16</p>
+                    </div>
+                </div>
+            </div>
+
+            <section id="configall" class="editor-section">
+
+                <h2 class="editor-section-title">Configurações Gerais</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Redes Sociais</a></li>
+                        <li><a href="">Recursos</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+                        <li uk-switcher-item="0">
+                            <!-- facebook -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="social_facebook" name="social_facebook" type="text" placeholder="https://www.facebook.com/traytecnologia/">
+                                    <i class="editor-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 96.124 96.123" fill="#C8C8C8"><path d="M72.089.02L59.624 0C45.62 0 36.57 9.285 36.57 23.656v10.907H24.037a1.96 1.96 0 0 0-1.96 1.961v15.803a1.96 1.96 0 0 0 1.96 1.96H36.57v39.876a1.96 1.96 0 0 0 1.96 1.96h16.352a1.96 1.96 0 0 0 1.96-1.96V54.287h14.654a1.96 1.96 0 0 0 1.96-1.96l.006-15.803a1.963 1.963 0 0 0-1.961-1.961H56.842v-9.246c0-4.444 1.059-6.7 6.848-6.7l8.397-.003a1.96 1.96 0 0 0 1.959-1.96V1.98A1.96 1.96 0 0 0 72.089.02z" /></svg>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- x -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="social_twitter" name="social_twitter" type="text" placeholder="https://x.com/tray">
+                                    <i class="editor-icon">
+                                        <svg width="30" height="30" fill="#c8c8c8" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- Instagram -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="social_instagram" name="social_instagram" type="text" placeholder="https://www.instagram.com/tray">
+                                    <i class="editor-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 438.536 438.536" fill="#c8c8c8"><path d="M421.981 16.562C410.941 5.519 397.711 0 382.298 0H56.248C40.83 0 27.604 5.521 16.561 16.562 5.52 27.6.001 40.828.001 56.243V382.29c0 15.413 5.518 28.644 16.56 39.683 11.043 11.04 24.272 16.563 39.687 16.563h326.046c15.41 0 28.644-5.523 39.684-16.563 11.043-11.039 16.557-24.27 16.557-39.683V56.243c-.001-15.418-5.514-28.639-16.554-39.681zM157.462 158.025c17.224-16.652 37.924-24.982 62.097-24.982 24.36 0 45.153 8.33 62.381 24.982 17.228 16.655 25.837 36.785 25.837 60.386 0 23.598-8.609 43.729-25.837 60.379-17.228 16.659-38.014 24.988-62.381 24.988-24.172 0-44.87-8.336-62.097-24.988-17.228-16.652-25.841-36.781-25.841-60.379 0-23.601 8.613-43.73 25.841-60.386zm231.403 212.564c0 4.945-1.718 9.083-5.141 12.416-3.433 3.33-7.519 4.996-12.282 4.996h-305.2c-4.948 0-9.091-1.666-12.419-4.996-3.333-3.326-4.998-7.471-4.998-12.416V185.575H89.08c-3.805 11.993-5.708 24.462-5.708 37.402 0 36.553 13.322 67.715 39.969 93.511 26.65 25.786 58.721 38.685 96.217 38.685 24.744 0 47.583-5.903 68.527-17.703 20.937-11.807 37.486-27.839 49.676-48.112 12.183-20.272 18.274-42.4 18.274-66.38 0-12.94-1.91-25.406-5.715-37.402h38.547V370.59h-.002zm0-254.963c0 5.52-1.903 10.184-5.716 13.99-3.805 3.809-8.466 5.711-13.989 5.711h-49.676c-5.517 0-10.185-1.903-13.99-5.711-3.806-3.806-5.708-8.47-5.708-13.99V68.522c0-5.33 1.902-9.945 5.708-13.848 3.806-3.901 8.474-5.854 13.99-5.854h49.676c5.523 0 10.185 1.952 13.989 5.854 3.812 3.903 5.716 8.518 5.716 13.848v47.104z" /></svg>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- Youtube -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="social_youtube" name="social_youtube" type="text" placeholder="https://www.youtube.com/user/TraySistemas">
+                                    <i class="editor-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 511.626 511.627" fill="#c8c8c8"><path d="M511.339 212.987c-.186-10.277-1-23.271-2.423-38.97-1.431-15.708-3.478-29.746-6.14-42.115-3.046-13.893-9.661-25.6-19.842-35.117-10.181-9.519-22.031-15.037-35.549-16.562-42.258-4.755-106.115-7.135-191.573-7.135-85.459 0-149.317 2.38-191.572 7.135-13.516 1.524-25.319 7.043-35.404 16.562-10.089 9.514-16.656 21.221-19.702 35.117-2.852 12.373-4.996 26.41-6.423 42.115-1.425 15.699-2.235 28.688-2.424 38.97C.094 223.265 0 237.539 0 255.813c0 18.272.094 32.55.288 42.826.189 10.284.999 23.271 2.424 38.969 1.427 15.707 3.474 29.745 6.139 42.116 3.046 13.897 9.659 25.602 19.842 35.115 10.185 9.517 22.036 15.036 35.548 16.56 42.255 4.76 106.109 7.139 191.572 7.139 85.466 0 149.315-2.379 191.573-7.139 13.518-1.523 25.316-7.043 35.405-16.56 10.089-9.514 16.652-21.225 19.698-35.115 2.854-12.371 4.996-26.409 6.427-42.116 1.423-15.697 2.231-28.691 2.423-38.969.191-10.276.287-24.554.287-42.826 0-18.274-.095-32.548-.287-42.826zm-154.456 58.244L210.706 362.59c-2.666 1.903-5.905 2.854-9.71 2.854-2.853 0-5.803-.764-8.848-2.286-6.28-3.422-9.419-8.754-9.419-15.985V164.454c0-7.229 3.14-12.561 9.419-15.986 6.473-3.431 12.657-3.239 18.558.571l146.178 91.36c5.708 3.23 8.562 8.372 8.562 15.415 0 7.04-2.855 12.184-8.563 15.417z" /></svg>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- pinterest -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="social_pinterest" name="social_pinterest" type="text" placeholder="https://www.pinterest.com/tray">
+                                    <i class="editor-icon">
+                                        <svg version="1.1" id="Capa_1" width="30" height="30" fill="#c8c8c8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="438.557px" height="438.557px" viewBox="0 0 438.557 438.557" style="enable-background:new 0 0 438.557 438.557;" xml:space="preserve"><g><path d="M414.418,24.128C398.341,8.047,378.972,0.005,356.323,0.005V0H82.239C59.591,0,40.222,8.044,24.138,24.125C8.057,40.209,0.015,59.578,0.015,82.226v274.089c0,22.647,8.042,42.018,24.123,58.095c16.084,16.084,35.454,24.126,58.102,24.126h52.25c-3.239-29.304-2.573-53.481,1.997-72.512l27.978-118.198c-4.568-9.329-6.854-20.841-6.854-34.543c0-15.796,4.045-29.075,12.137-39.827c8.086-10.757,17.937-16.134,29.547-16.134c9.326,0,16.512,3.092,21.554,9.276c5.041,6.189,7.566,13.945,7.566,23.272c0,5.898-1.047,12.99-3.138,21.267c-2.098,8.285-4.9,17.99-8.422,29.126c-3.521,11.135-6.042,19.934-7.566,26.404c-2.663,11.424-0.476,21.27,6.567,29.555c7.042,8.274,16.272,12.422,27.696,12.422c20.177,0,36.686-11.231,49.539-33.694c12.847-22.456,19.267-49.676,19.267-81.649c0-24.551-7.946-44.54-23.846-59.955c-15.886-15.418-38.013-23.128-66.376-23.128c-31.78,0-57.526,10.138-77.228,30.407c-19.701,20.271-29.552,44.684-29.552,73.233c0,16.748,4.761,31.025,14.277,42.828c3.234,3.614,4.283,7.615,3.14,11.995c-0.953,3.237-2.38,9.041-4.283,17.412c-0.763,2.669-2.141,4.473-4.141,5.428c-2.002,0.951-4.237,0.951-6.711,0c-14.655-6.088-25.747-16.563-33.263-31.409c-7.517-14.842-11.276-31.977-11.276-51.387c0-12.564,2.047-25.179,6.14-37.831c4.093-12.66,10.422-24.841,18.986-36.545c8.564-11.709,18.792-22.129,30.69-31.267c11.894-9.132,26.458-16.413,43.682-21.838c17.222-5.424,35.736-8.137,55.524-8.137c20.181,0,38.927,3.48,56.25,10.426c17.319,6.945,31.833,16.175,43.544,27.69c11.703,11.516,20.889,24.744,27.545,39.687c6.666,14.938,9.996,30.406,9.996,46.392c0,43.019-10.896,78.564-32.688,106.637c-21.793,28.075-49.916,42.116-84.363,42.116c-11.43,0-22.128-2.666-32.124-7.994c-9.991-5.328-16.986-11.704-20.984-19.13c-8.374,33.312-13.417,53.197-15.131,59.669c-4.377,16.751-14.655,36.733-30.833,59.956H356.32c22.647,0,42.017-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102v-274.1C438.541,59.582,430.499,40.212,414.418,24.128z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- Blogger -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="social_blogger" name="social_blogger" type="text" placeholder="https://www.blogger.com/tray">
+                                    <i class="editor-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="30" height="30" fill="#c8c8c8"><path d="M299.209 126.635c0-7.391-5.992-13.382-13.383-13.382v-.001h-13.453v.001c-8.595.011-17.44-.289-21.199-3.698-5.313-4.912-6.113-13.732-7.719-25.66-3.006-23.154-4.91-24.357-8.52-32.175C221.805 23.855 186.223 2.906 161.766 0H95.512C43.389 0 .791 42.699.791 94.821v110.558C.791 257.4 43.389 300 95.512 300h108.853c52.121 0 94.42-42.6 94.721-94.622l.123-78.743zM96.715 77.48h52.521c10.023 0 18.143 8.12 18.143 18.042 0 9.924-8.119 18.143-18.143 18.143H96.715c-10.025 0-18.145-8.218-18.145-18.143 0-9.922 8.119-18.042 18.145-18.042zm106.748 144.538H96.715c-10.025 0-18.145-8.219-18.145-18.041 0-9.924 8.119-18.043 18.145-18.043h106.748c9.924 0 18.043 8.119 18.043 18.043 0 9.821-8.119 18.041-18.043 18.041z" /></svg>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- Whatsapp -->
+                            <div class="editor-item">
+                                <div class="editor-field">
+                                    <input class="editor-input" id="whatsapp" name="whatsapp" type="text" placeholder="(99) 99999-9999">
+                                    <i class="editor-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30.667 30.667" fill="#c8c8c8"><path d="M30.667 14.939c0 8.25-6.74 14.938-15.056 14.938a15.1 15.1 0 0 1-7.276-1.857L0 30.667l2.717-8.017a14.787 14.787 0 0 1-2.159-7.712C.559 6.688 7.297 0 15.613 0c8.315.002 15.054 6.689 15.054 14.939zM15.61 2.382c-6.979 0-12.656 5.634-12.656 12.56 0 2.748.896 5.292 2.411 7.362l-1.58 4.663 4.862-1.545c2 1.312 4.393 2.076 6.963 2.076 6.979 0 12.658-5.633 12.658-12.559C28.27 8.016 22.59 2.382 15.61 2.382zm7.604 15.998c-.094-.151-.34-.243-.708-.427-.367-.184-2.184-1.069-2.521-1.189-.34-.123-.586-.185-.832.182-.243.367-.951 1.191-1.168 1.437-.215.245-.43.276-.799.095-.369-.186-1.559-.57-2.969-1.817-1.097-.972-1.838-2.169-2.052-2.536-.217-.366-.022-.564.161-.746.165-.165.369-.428.554-.643.185-.213.246-.364.369-.609.121-.245.06-.458-.031-.643-.092-.184-.829-1.984-1.138-2.717-.307-.732-.614-.611-.83-.611-.215 0-.461-.03-.707-.03s-.646.089-.983.456-1.291 1.252-1.291 3.054c0 1.804 1.321 3.543 1.506 3.787.186.243 2.554 4.062 6.305 5.528 3.753 1.465 3.753.976 4.429.914.678-.062 2.184-.885 2.49-1.739.308-.858.308-1.593.215-1.746z" /></svg>
+                                    </i>
+                                </div>
+                            </div>
+                        </li>
+                        <li uk-switcher-item="1">
+                            <div class="uk-margin">
+                                <div class="editor-item">
+                                    <div class="editor-field change">
+                                        <div class="editor-label">
+                                            <h5 class="editor-switcher-title">Avaliações</h5>
+                                            <div class="switcher">
+                                                <input type="checkbox" id="store_rating" name="store_rating" class="check-switcher">
+                                                <label for="store_rating" class="green"></label>
+                                            </div>
+                                        </div>
+                                        <p class="editor-tip">Habilitar as avaliações na loja</p>
+                                        <div class="editor-tip" style="font-size: 12px; margin-top: 8px;">
+                                            Essa funcionalidade depende do plano da loja. Para maiores detalhes acesse: <a href="https://www.tray.com.br/planos-precos" target="_blank">https://www.tray.com.br/planos-precos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="editor-item">
+                                    <div class="editor-field change">
+                                        <div class="editor-label">
+                                            <h5 class="editor-switcher-title">Filtro Inteligente</h5>
+                                            <div class="switcher">
+                                                <input type="checkbox" id="enable_filter" name="enable_filter" class="check-switcher">
+                                                <label for="enable_filter" class="green"></label>
+                                            </div>
+                                        </div>
+                                        <p class="editor-tip">Habilita o filtro inteligente na loja</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Banners -->
+            <section id="banner" class="editor-section">
+                <h2 class="editor-section-title">Banners</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Configurações</a></li>
+                        <li><a href="">Mobile</a></li>
+                        <li><a href="">Cores</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+                        <li uk-switcher-item="1">
+                            <fieldset class="uk-fieldset">
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Banners Responsivo</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="home_slick" name="home_slick" class="check-switcher">
+                                                        <label for="home_slick" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Habilita Banners Responsivo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="uk-alert-warning uk-alert" uk-alert="">
+                                            <h3>Observaço</h3>
+                                            <p>Este banner substitui o plugin padrão da plataforma, não seguindo as configurações de efeito, tempo e etc definidas no cadastro de banner.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Setas</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="banner_arrows" name="banner_arrows"
+                                                            class="check-switcher">
+                                                        <label for="banner_arrows" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Exibe as setas de navegação nas laterais do banner. Por motivos de usabilidade as setas não são exibidas na versão mobile, apenas os Dots.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Dots</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="banner_dots" name="banner_dots"
+                                                            class="check-switcher">
+                                                        <label for="banner_dots" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Exibe indicadores de navegação centralizados na parte de baixo do banner</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Efeito Fade</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="banner_effect_fade" name="banner_effect_fade"
+                                                            class="check-switcher">
+                                                        <label for="banner_effect_fade" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">A troca das fases é feita por opacidade, o primeiro vai sumindo até aparecer o segundo e assim por diante.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Infinito</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="banner_infinite" name="banner_infinite"
+                                                            class="check-switcher">
+                                                        <label for="banner_infinite" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Ao chegar na última fase o carrossel se repete.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Altura Adaptatível</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="banner_adaptive_height" name="banner_adaptive_height"
+                                                            class="check-switcher">
+                                                        <label for="banner_adaptive_height" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Caso você possua imagens de tamanhos diferentes entre as fases o banner irá ajustar sua altura, isto afeta o conteúdo abaixo do banner, podendo aumentar ou diminuir dependendo da imagem.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Autoplay</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="banner_autoplay" name="banner_autoplay"
+                                                            class="check-switcher">
+                                                        <label for="banner_autoplay" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">A troca das fases será automática, não sendo necessário utilizar as Setas ou os Dots.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-padding-small editor-item">
+                                        <div class="editor-field change">
+                                            <div class="editor-label">
+                                                <h5 class="editor-switcher-title">Intervalo entre as fases	</h5>
+                                                <div class="uk-form-controls">
+                                                    <select class="uk-select" id="banner_interval" name="banner_interval">
+                                                        <option value="3000">3 segundos</option>
+                                                        <option value="4000">4 segundos</option>
+                                                        <option value="5000">5 segundos</option>
+                                                        <option value="6000">6 segundos</option>
+                                                        <option value="7000">7 segundos</option>
+                                                        <option value="8000">8 segundos</option>
+                                                        <option value="9000">9 segundos</option>
+                                                        <option value="10000">10 segundos</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <p class="editor-tip">Funciona apenas quando o Autoplay estiver ativo, define o tempo de exibição entre uma fase e outra.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-padding-small editor-item">
+                                        <div class="editor-field change">
+                                            <div class="editor-label">
+                                                <h5 class="editor-switcher-title">Lazy Load		</h5>
+                                                <div class="uk-form-controls">
+                                                    <select class="uk-select" id="banner_lazyload" name="banner_lazyload">
+                                                        <option value="ondemand">On-Demand</option>
+                                                        <option value="progressive">Progressive</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <p class="editor-tip">Também conhecido como carregamento sob demanda, possui duas opções:
+                                                    On-Demand: carrega a primeira imagem e as outras apenas quando forem entrar na tela.
+                                                    Progressive: carrega a primeira imagem e as outras quando o site termina de carregar.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </li>
+                        <li uk-switcher-item="2">
+                            <fieldset class="uk-fieldset">
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Principais</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="enable_banner_home" name="enable_banner_home" class="check-switcher">
+                                                        <label for="enable_banner_home" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Habilitar banner principal</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Padrões</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="enable_banner_default" name="enable_banner_default" class="check-switcher">
+                                                        <label for="enable_banner_default" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Habilitar Todos os banners padrões</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+                        <li uk-switcher-item="3">
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Opções de cores</legend>
+
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor das setas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_slick_arrow" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor das setas ao passar o mouse</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_slick_arrow_hover" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor dos Dots</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_slick_dot" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor dos Ativos</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_slick_dot_active" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Showcases -->
+            <section id="showcase" class="editor-section">
+                <h2 class="editor-section-title">Vitrines</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Geral</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+                        <!--General -->
+                        <li uk-switcher-item="0">
+                            <fieldset class="uk-fieldset">
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Exibir apenas produtos disponiveis</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="show_available_products" name="show_available_products"
+                                                            class="check-switcher">
+                                                        <label for="show_available_products" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Remove da listagem os produtos indisponiveis na home</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="uk-alert-warning uk-alert" uk-alert="">
+                                            <h3>Observação</h3>
+                                            <p>Produtos sem estoque podem não ser removidos através dessa configuração, é aplicado o filtro de acordo com as configuraç   ões do painel administrativo da loja. </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Direcionar direto para o carrinho</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="buy_to_cart" name="buy_to_cart"
+                                                            class="check-switcher">
+                                                        <label for="buy_to_cart" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip">Esta opção não verifica produtos que possuem variações.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Exibir tag de desconto</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="discount" name="discount"
+                                                            class="check-switcher">
+                                                        <label for="discount" class="green"></label>
+                                                    </div>
+                                                </div>
+                                                <p class="editor-tip"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="uk-flex">
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <legend class="uk-h4">Vitrine 1</legend>
+
+                                        <label>O que exibir na primeira vitrine?</label>
+                                        <div class="uk-margin">
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_1"
+                                                        value="featured"> Destaques</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_1"
+                                                        value="new"> Lançamentos</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_1"
+                                                        value="free_shipping"> Frete Grátis*</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_1"
+                                                        value="promotion"> Promoções</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_1"
+                                                        value="top_seller"> Mais Vendidos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <legend class="uk-h4">Vitrine 2</legend>
+
+                                        <label>O que exibir na primeira vitrine?</label>
+                                        <div class="uk-margin">
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_2"
+                                                        value="featured"> Destaques</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_2"
+                                                        value="new"> Lançamentos</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_2"
+                                                        value="free_shipping"> Frete Grátis*</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_2"
+                                                        value="promotion"> Promoções</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_2"
+                                                        value="top_seller"> Mais Vendidos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <legend class="uk-h4">Vitrine 3</legend>
+
+                                        <label>O que exibir na primeira vitrine?</label>
+                                        <div class="uk-margin">
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_3"
+                                                        value="featured"> Destaques</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_3"
+                                                        value="new"> Lançamentos</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_3"
+                                                        value="free_shipping"> Frete Grátis*</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_3"
+                                                        value="promotion"> Promoções</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="showcase_3"
+                                                        value="top_seller"> Mais Vendidos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-flex">
+                                    <div class="uk-padding-small uk-width-1-2">
+                                        <legend class="uk-h4">Preço anterior</legend>
+
+                                        <label>Como exibir o preço anterior à promoção ?</label>
+                                        <div class="uk-margin">
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="price_before_style" value="strike"><span style="text-decoration: line-through;"> R$ 0,00</span></label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="price_before_style" value="depor"> De: R$ 0,00</label>
+                                            </div>
+                                            <div class="uk-child-width-auto">
+                                                <label class="f-400"><input class="uk-radio" type="radio" name="price_before_style" value="strike-depor"><span style="text-decoration: line-through;">De: R$ 0,00</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://www.tray.com.br/" target="_blank" style="font-size: 12px; color: #333333">* Disponível em alguns planos.</a>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Newsletter -->
+            <section id="showcase" class="editor-section">
+                <h2 class="editor-section-title">Newsletter</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Geral</a></li>
+                        <li class=""><a href="">Cores</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+                        <li uk-switcher-item="0">
+                            <fieldset class="uk-fieldset uk-margin">
+                                <legend class="uk-legend">Imagem de fundo</legend>
+                                <div uk-form-custom>
+                                    <p class="uk-text-meta">Tamanho recomendado: 1920 x 230</p>
+                                    <input type="file" name="bg_news">
+                                    <button class="uk-button uk-button-default" type="button" tabindex="-1">Selecionar</button>
+                                    <button class="btn-remove uk-button uk-button-danger" name="bg_news">Remover</button>
+                                </div>
+                            </fieldset>
+                        </li>
+                        <li uk-switcher-item="1">
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Newsletter</legend>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Título</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_news_texto1" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Subtítulo</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_news_texto2" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fundo do botão</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_news_bgbotao" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de texto do botão</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_news_textobotao" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor das bordas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_news_border" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fundo</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="bg_news_color" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+
+
+            <!-- Internal Pages -->
+            <section id="pages" class="editor-section">
+                <h2 class="editor-section-title">Cores e Layout</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Cores</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+                        <!--Colors-->
+                        <li uk-switcher-item="0">
+
+                            <!-- Gerais -->
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Geral</legend>
+
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor principal</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_bg_pimaria" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor secundária</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_bg_secundaria" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Avaliações</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_texto_avaliacao" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Mais buscadas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_texto_tags" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                     <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor da tag promocional da vitrine</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_tag_discount" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do texto da tag promocional da vitrine</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_tag_discount_txt" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Cabeçalho</legend>
+
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor principal</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_main" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do texto</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_txt" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor dos icones</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_icon" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do texto carrinho</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_icon_text_cart" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do icone do carrinho</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_icon_cart" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do fundo da quantidade do carrinho</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_icon_cart_bg" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do texto da quantidade do carrinho</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_header_icon_cart_txt" class="form-control" type="text">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+                            <!-- Menu -->
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Menu</legend>
+
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de Fundo</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_menu_bg" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fonte</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_menu_font" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor da fonte ao passar o mouse</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_menu_font_hover" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fundo subcategorias</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_menu_bg_sub" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fundo sub. ao passar o mouse</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_menu_bg_sub_hover" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do icone menu no mobile</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_menu_mobile" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Vitrine -->
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Vitrine</legend>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do botão comprar</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_cta" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fundo imagem do produto</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_product_image" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Rodape -->
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Rodapé</legend>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor da mensagem</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_texto_msgrodape" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor de fundo</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_bg_rodape" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor das linhas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_line_rodape" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor dos textos</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_texto_rodape" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Pagina de Produtos (pagina interna)</legend>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor dos botoes de quantidade</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_quantity" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do botao comprar</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_buy_button" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do botao de calcular frete</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_shipping" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor das abas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_pages" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do texto das abas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_pages_txt" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do link de paginas</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_link_pages" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do botao limpar</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_button_clear" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do botao Detalhes da navegacao</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_button_detail" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do preco De</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_price_vayne" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do Preco principal</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_price_main" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do info-preco</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_info_price" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do fundo das tags</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_tag_pg_produtct_bg" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Cor do texto das tags</label>
+                                        <div class="input-group colorPicker colorpicker-element">
+                                            <span class="input-group-addon"><i style="background: rgb(255,255,255);"></i></span>
+                                            <input name="color_tag_pg_produtct_txt" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Seguranca -->
+            <section id="securit" class="editor-section">
+                <h2 class="editor-section-title">Segurança</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Segurança</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+                        <!-- Selos -->
+                        <li uk-switcher-item="0">
+                            <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                <div class="uk-form-controls uk-padding-small uk-width-1-2">
+                                    <div class="editor-field change">
+                                        <div class="editor-label">
+                                            <h5 class="editor-switcher-title">Selo Adicional</h5>
+                                            <div class="switcher">
+                                                <input type="checkbox" id="enable_seal" name="enable_seal"
+                                                    class="check-switcher">
+                                                <label for="enable_seal" class="green"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="editor-switcher-title">Adicione abaixo o código do selo
+                                        adicional</label>
+                                    <textarea name="seal_code" id="seal_code" cols="10" rows="5"></textarea>
+                                </div>
+                                <div class="uk-form-controls uk-padding-small uk-width-1-2">
+                                    <div class="uk-alert-warning uk-margin-medium-left" uk-alert>
+                                        <p>O selo adicional será exibido no rodapé da loja</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+        </div>
+
+        <nav class="editor-navigation">
+            <a href="#configall" class="editor-navigation-link config">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.765 268.765"
+                    width="25" height="25" fill="#71757A">
+                    <path d="M267.92 119.461c-.425-3.778-4.83-6.617-8.639-6.617-12.315 0-23.243-7.231-27.826-18.414-4.682-11.454-1.663-24.812 7.515-33.231a7.463 7.463 0 0 0 .817-10.133 132.977 132.977 0 0 0-21.289-21.5c-3.063-2.458-7.557-2.116-10.213.825-8.01 8.871-22.398 12.168-33.516 7.529-11.57-4.867-18.866-16.591-18.152-29.176a7.455 7.455 0 0 0-6.595-7.849 134.163 134.163 0 0 0-30.232-.08 7.478 7.478 0 0 0-6.654 7.689c.438 12.461-6.946 23.98-18.401 28.672-10.985 4.487-25.272 1.218-33.266-7.574-2.642-2.896-7.063-3.252-10.141-.853a133.478 133.478 0 0 0-21.74 21.493c-2.481 3.086-2.116 7.559.802 10.214 9.353 8.47 12.373 21.944 7.514 33.53-4.639 11.046-16.109 18.165-29.24 18.165-4.261-.137-7.296 2.723-7.762 6.597a134.618 134.618 0 0 0-.058 30.561c.422 3.794 4.961 6.608 8.812 6.608 11.702-.299 22.937 6.946 27.65 18.415 4.698 11.454 1.678 24.804-7.514 33.23a7.469 7.469 0 0 0-.817 10.126 133.459 133.459 0 0 0 21.259 21.508c3.079 2.481 7.559 2.131 10.228-.81 8.04-8.893 22.427-12.184 33.501-7.536 11.599 4.852 18.895 16.575 18.181 29.167a7.464 7.464 0 0 0 6.595 7.85 133.572 133.572 0 0 0 30.233.081 7.479 7.479 0 0 0 6.653-7.696c-.451-12.454 6.946-23.973 18.386-28.657 11.059-4.517 25.286-1.211 33.281 7.572a7.51 7.51 0 0 0 10.142.848 133.787 133.787 0 0 0 21.74-21.494 7.461 7.461 0 0 0-.803-10.213c-9.353-8.47-12.388-21.946-7.529-33.524 4.568-10.899 15.612-18.217 27.491-18.217l1.662.043c3.853.313 7.398-2.655 7.865-6.588a134.504 134.504 0 0 0 .06-30.561zm-133.325 60.03c-24.718 0-44.824-20.106-44.824-44.824 0-24.717 20.106-44.824 44.824-44.824 24.717 0 44.823 20.107 44.823 44.824 0 24.718-20.106 44.824-44.823 44.824z"
+                        fill-rule="evenodd" clip-rule="evenodd" /></svg>
+                <p class="editor-navigation-text">Configurações</p>
+            </a>
+            <a href="#banner" class="editor-navigation-link banner">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" fill="#71757A" width="25" height="25"
+                    viewBox="0 0 550.801 550.8">
+                    <path d="M515.828 61.201H34.972C15.659 61.201 0 76.859 0 96.172V454.63c0 19.312 15.659 34.97 34.972 34.97h480.856c19.314 0 34.973-15.658 34.973-34.971V96.172c0-19.313-15.658-34.971-34.973-34.971zm0 34.971V350.51l-68.92-62.66c-10.359-9.416-26.289-9.04-36.186.866l-69.752 69.741-137.532-164.278c-10.396-12.415-29.438-12.537-39.99-.271L34.972 343.219V96.172h480.856zm-148.627 91.8c0-26.561 21.523-48.086 48.084-48.086 26.562 0 48.086 21.525 48.086 48.086s-21.523 48.085-48.086 48.085c-26.56.001-48.084-21.524-48.084-48.085z" /></svg>
+                <p class="editor-navigation-text">Banner</p>
+            </a>
+            <a href="#showcase" class="editor-navigation-link showcase">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 472.615 472.615"
+                    fill="#71757A" width="25" height="25">
+                    <path d="M0 98.432v374.183h472.615V98.432H0zm147.692 334.773H49.231V246.128h98.462v187.077zm137.846 0h-98.462V246.128h98.462v187.077zm137.847 0h-98.462V246.128h98.462v187.077zm0-226.461H49.231v-68.923h374.154v68.923zM0 0v78.74h472.615V0H0zm354.462 59.047H334.77V39.355h19.692v19.692zm39.384 0h-19.692V39.355h19.692v19.692zm39.385 0h-19.692V39.355h19.692v19.692z" /></svg>
+                <p class="editor-navigation-text">Vitrine</p>
+            </a>
+
+            <a href="#products" class="editor-navigation-link product">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 309.133 309.133"
+                    fill="#71757A" width="25" height="25">
+                    <path d="M30.078 172.934c23.695-34.108 37.633-56.082 47.795-72.321-39.053 3.454-76.486 52.048-76.486 52.048l25.777 25.776a26.79 26.79 0 0 1 2.914-5.503zM130.723 281.997l25.76 25.759s48.592-37.43 52.047-76.482c-16.234 10.158-38.201 24.091-72.32 47.792a26.817 26.817 0 0 1-5.487 2.931zM91.549 268.678c-4.422 1.787-8.768 3.686-13.299 5.2-12.102 4.045-24.566 6.778-37.203 8.522-5.297.731-10.643 1.351-15.998 1.757.051-.661.1-1.323.156-1.983 1.105-12.876 3.064-25.685 6.229-38.223 1.525-6.051 3.471-11.933 5.56-17.807 1.299-3.652 2.92-7.147 4.555-10.642l-2.834-2.832c-6.303 4.234-11.785 9.584-16.437 15.637-6.887 8.963-12.049 19.117-15.658 29.817C2.743 269.613.431 281.781.071 293.911c-.051 1.704-.168 3.445.096 5.136a11.941 11.941 0 0 0 8.123 9.505c1.746.563 3.502.573 5.313.559 11.012-.092 22.195-2.005 32.736-5.137 19.279-5.728 38.742-16.504 50.15-33.532l-2.758-2.756c-.723.34-1.448.673-2.182.992zM306.004 3.149L306 3.146A10.688 10.688 0 0 0 298.234.02c-34.41.675-119.307 7.111-164.393 52.199-20.467 20.467-27.119 31.121-41.699 54.469-10.5 16.81-24.875 39.835-51.147 77.649a10.691 10.691 0 0 0 1.221 13.66l68.928 68.929a10.678 10.678 0 0 0 7.564 3.133c2.119 0 4.248-.628 6.096-1.911 37.828-26.278 60.844-40.65 77.648-51.146 23.346-14.579 34.002-21.233 54.473-41.702 45.166-45.168 51.557-130.009 52.205-164.39a10.69 10.69 0 0 0-3.126-7.761zm-79.817 130.057c-13.877 13.876-36.373 13.876-50.25 0-13.879-13.877-13.877-36.372.002-50.248 13.875-13.877 36.371-13.879 50.248-.003 13.873 13.876 13.875 36.376 0 50.251z" /></svg>
+                <p class="editor-navigation-text">Pagina de Produtos</p>
+            </a>
+
+            <a href="#securit" class="editor-navigation-link reviews">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#71757A"
+                    viewBox="0 0 27.555 27.555">
+                    <path d="M13.777 0C7.108 0 1.701 5.407 1.701 12.076c0 3.45 1.454 6.553 3.773 8.752l-.404 6.727 5.736-3.787c.952.241 1.944.383 2.971.383 6.67 0 12.076-5.406 12.076-12.076C25.854 5.407 20.447 0 13.777 0zM12.61 11.342c0 1.24-.258 2.219-.774 2.936s-1.4 1.352-2.654 1.9l-.945-1.789c.771-.361 1.304-.722 1.598-1.08.295-.36.459-.784.493-1.273H8.237V7.974h4.373v3.368zm6.707 0c0 1.24-.258 2.219-.774 2.936-.516.719-1.4 1.352-2.654 1.9l-.944-1.789c.771-.361 1.304-.722 1.599-1.08.295-.36.459-.784.493-1.273h-2.091V7.974h4.373l-.002 3.368z" /></svg>
+                <p class="editor-navigation-text">Segurança</p>
+            </a>
+
+
+            <a href="#securit" class="editor-navigation-link reviews">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#71757A"
+                    viewBox="0 0 27.555 27.555">
+                    <path d="M13.777 0C7.108 0 1.701 5.407 1.701 12.076c0 3.45 1.454 6.553 3.773 8.752l-.404 6.727 5.736-3.787c.952.241 1.944.383 2.971.383 6.67 0 12.076-5.406 12.076-12.076C25.854 5.407 20.447 0 13.777 0zM12.61 11.342c0 1.24-.258 2.219-.774 2.936s-1.4 1.352-2.654 1.9l-.945-1.789c.771-.361 1.304-.722 1.598-1.08.295-.36.459-.784.493-1.273H8.237V7.974h4.373v3.368zm6.707 0c0 1.24-.258 2.219-.774 2.936-.516.719-1.4 1.352-2.654 1.9l-.944-1.789c.771-.361 1.304-.722 1.599-1.08.295-.36.459-.784.493-1.273h-2.091V7.974h4.373l-.002 3.368z" /></svg>
+                <p class="editor-navigation-text">Segurança</p>
+            </a>
+
+
+            <a href="#pages" class="editor-navigation-link reviews">
+                <svg class="editor-navigation-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#71757A"
+                    viewBox="0 0 27.555 27.555">
+                    <path d="M13.777 0C7.108 0 1.701 5.407 1.701 12.076c0 3.45 1.454 6.553 3.773 8.752l-.404 6.727 5.736-3.787c.952.241 1.944.383 2.971.383 6.67 0 12.076-5.406 12.076-12.076C25.854 5.407 20.447 0 13.777 0zM12.61 11.342c0 1.24-.258 2.219-.774 2.936s-1.4 1.352-2.654 1.9l-.945-1.789c.771-.361 1.304-.722 1.598-1.08.295-.36.459-.784.493-1.273H8.237V7.974h4.373v3.368zm6.707 0c0 1.24-.258 2.219-.774 2.936-.516.719-1.4 1.352-2.654 1.9l-.944-1.789c.771-.361 1.304-.722 1.599-1.08.295-.36.459-.784.493-1.273h-2.091V7.974h4.373l-.002 3.368z" /></svg>
+                <p class="editor-navigation-text">Cores e Layout</p>
+            </a>
+        </nav>
+    </div>
+</fieldset>
+
+<!-- jQuery is required -->
+<script src="https://images.tcdn.com.br/491223/themes/283/configs/jquery.min.js"></script>
+
+<!-- UIkit JS -->
+<script src="https://images.tcdn.com.br/491223/themes/283/configs/uikit.min.js"></script>
+<script src="https://images.tcdn.com.br/491223/themes/283/configs/uikit-icons.min.js"></script>
+
+<script>
+    (function () {
+        var $input = document.querySelectorAll('.editor-body input[type="file"]');
+        var $btnRemove = document.querySelectorAll('.editor-body .btn-remove');
+        var path = document.getElementById('url-host-images').value;
+        var imageNotCharged = path + '/img/image-not-charged.jpg';
+
+        var getInputImage = function( value ){
+            var nameInput = value.name;
+            var targetInput = document.getElementById(nameInput);
+
+            return targetInput;
+        }
+
+        var getImage = function( value ){
+            var nameInput = value.name;
+            var targetInput = document.getElementById(nameInput);
+            var img = targetInput.nextElementSibling.childNodes[1];
+
+            return img;
+        }
+
+        var removeImage = function( value ){
+            getImage( value ).src = imageNotCharged;
+            getInputImage( value ).value = '';
+        }
+
+        var changeImage = function( value, evt ){
+            var img = getImage( value );
+
+            var file = evt.target.files[0];
+
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function(e){
+                console.log('onload do reader...' );
+                var temp = new Image();
+                temp = img;
+                temp.src = reader.result;
+            }, false);
+
+            reader.readAsDataURL(file);
+        }
+
+        // Button change image
+        $input.forEach(function(value){
+            value.addEventListener('change', function(evt){
+                changeImage( value, evt );
+            })
+        }, false);
+
+        // Button remove image
+        $btnRemove.forEach(function( value ){
+            value.addEventListener('click', function( evt ){
+                evt.preventDefault();
+
+                removeImage( this );
+            });
+        });
+
+        // Load image default for not images loaded
+        $input.forEach(function( value ){
+            if ( getInputImage( value ).value === '' ){
+                getImage( value ).src = imageNotCharged;
+            }
+        });
+
+        var errorMessage = function (el) {
+            var input = document.querySelectorAll(`.error-message-${el}`)[0];
+            var template = `
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>Verifique o nome do arquivo, ele não deve conter espaços em branco, e nem caracteres especiais, além de possuir as seguintes extensões <b>(.png, .jpg, .jpeg, .jpg, .gif e .svg)<b></p>
+            </div>
+            `
+            input.innerHTML = template;
+        }
+    })();
+</script>

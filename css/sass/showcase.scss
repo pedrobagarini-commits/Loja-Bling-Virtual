@@ -1,0 +1,107 @@
+/**
+ * Showcase
+ */
+
+.showcase{
+    background: #fff;
+    margin-top: 30px;
+    
+    .title{
+        padding: 30px 0;
+        text-transform: none;
+        text-align: center;
+        
+        @media screen and (max-width: $sm){
+            padding: 30px 5px;
+        }
+        
+        strong{
+            color: #e42754;
+            display: inline-block;
+            margin: 0 10px;
+            vertical-align: middle;
+            @include typo(5rem, 400, $font2, 5.2rem);
+            
+            @media screen and (max-width: $sm){
+                @include typo(3rem, 400, $font2, 3.2rem);
+            }
+        }
+        
+        svg{
+            display: inline-block;
+            vertical-align: middle;
+            
+            fill: #e42754;
+        }
+    }
+    
+    .slick-list{
+        padding: 0 0 45px 0;
+    }
+    
+    .slick-slide{
+        @media screen and (max-width: $sm){
+            padding: 0;
+        }
+    }
+    
+    .slick-arrow{
+        background: none;
+        border: none;
+        font-size: 0;
+        height: 38px;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        top: calc(50% - 19px);
+        width: 38px;
+        z-index: 10;
+        
+        &.slick-next{
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAdCAYAAAB1yDbaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKxJREFUeNpiYGBgeALEK4GYmYEMsAGI/wPxUnIMYAPiXZQYwAXE+6AGzAdiRkoMmE6uAccoMYAfiE9CDZhATgwgG9BBrgEXKTFAFIgvQw1opNSACnINuE2JATJAfAdqQCGlBmSSY4AlVPNPutmMrDGb1NC+Q05okx3PyBqrSU3bl8hJ22TnKmSN3aSWJCfIKUnILsOQNc4iRSOo3N5DbrlNUY3xGIiXkKMRIMAAwQRDWLY1FrsAAAAASUVORK5CYII=') no-repeat center center;
+            right: -45px;
+        }
+        
+        &.slick-prev{    
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAdCAYAAAB1yDbaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALJJREFUeNpiYCAdMAPxSiB+Qo7GpUD8H4g3kKtxFxCzEauREYjnQzXuA2IuUjROp1TjMVI0gsAEqMaTQMxPisYOSjVeJFVjI1TjZSAWJUVjBaUab5OqsRCq8Q4Qy5CiMZNcjSDwE6rZkowcRpnNIJBNqQEVSAaIUmLAZXINqKbUAFjavkRq2qY4V8FANyUGIJckJ0gtSSgqw5ANmEWJAcjl9h5Sym2KawxkA5YA8WOAAAMAQyxDWMsgK80AAAAASUVORK5CYII=') no-repeat center center;
+            left: -45px;
+        }
+    }
+    
+    .slick-dots{  
+        padding: 30px 0;
+        overflow: hidden;
+        text-align: center;
+        
+        li{
+            background: #d7d7d7;
+            display: inline-block;
+            height: 15px;
+            margin: 0 10px 10px;
+            width: 15px;
+            
+            &.slick-active{
+                background: #4b8cdc;
+            }
+        }
+        
+        button{
+            display: none;
+        }
+    }
+    
+    &.best-sellers{
+     
+        .product-1{
+            margin: 0 0 60px 0;
+            min-height: 400px;
+            
+            @media screen and (max-width: $sm){
+                margin: 0 0 20px 0;
+                min-height: 0;
+            }
+        }
+        
+    }    
+
+}

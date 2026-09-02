@@ -1,0 +1,190 @@
+{% if settings.limitProducts %}
+    {% set limitProducts = settings.limitProducts %}
+{% else %}
+    {% set limitProducts = 12 %}
+{% endif %}
+
+{% set showAvailable = settings.show_available_products ? 'available' %}
+
+{% if settings.showcase_1 == "featured" %}
+    {% set showcaseText = "Destaques" %}
+{% elseif settings.showcase_1 == "new" %}
+    {% set showcaseText = "Lançamentos" %}
+{% elseif settings.showcase_1 == "free_shipping" %}
+    {% set showcaseText = "Frete Grátis" %}
+{% elseif settings.showcase_1 == "promotion" %}
+    {% set showcaseText = "Promoções" %}
+{% elseif settings.showcase_1 == "top_seller" %}
+    {% set showcaseText = "Mais Vendidos" %}
+{% endif %}
+
+{% if showAvailable %}
+    {% if settings.showcase_1 == "top_seller" %}
+    <div id="prognoos_popv1"></div>	
+    
+        {% set products = Products({
+            'filter': showAvailable,
+            'limit': limitProducts,
+            'order': {'quantity_sold': 'desc'}
+        }) %}    
+    
+    {% else %}
+        {% set products = Products({
+            'filter': [showAvailable, settings.showcase_1],
+            'limit': limitProducts,
+            'order': 'rand'
+        }) %}
+    {% endif %}
+    
+{% else %}
+    {% if settings.showcase_1 == "top_seller" %}
+    <div id="prognoos_popv1"></div>
+    
+        {% set products = Products({
+            'filter': available,
+            'limit': limitProducts,
+            'order': {'quantity_sold': 'desc'}
+        }) %}      
+    {% else %}
+        {% set products = Products({
+            'filter': settings.showcase_1,
+            'limit': limitProducts,
+            'order': 'rand'
+        }) %}
+    {% endif %}
+{% endif %}
+
+{% element 'showcase' { 
+    "products": products,
+    "showcaseTitle": showcaseText,
+    "showcaseCarousel": "s-carousel"
+} %}
+ 
+{% if not utils.is_mobile and banner.extra4 %}
+    <div class="banners banner-widget-home">
+        {{ banner.extra4 }} 
+    </div> 
+{% elseif utils.is_mobile and banner.extra9 %}
+    {% if settings.enable_banner_default %}
+        <div class="banners banner-widget-home">
+            {{ banner.extra9 }} 
+        </div>
+    {% endif %} 
+{% endif %} 
+
+{% if settings.showcase_2 == "featured" %}
+    {% set showcaseText = "Destaques" %}
+{% elseif settings.showcase_2 == "new" %}
+    {% set showcaseText = "Lançamentos" %}
+{% elseif settings.showcase_2 == "free_shipping" %}
+    {% set showcaseText = "Frete Grátis" %}
+{% elseif settings.showcase_2 == "promotion" %}
+    {% set showcaseText = "Promoções" %}
+{% elseif settings.showcase_2 == "top_seller" %}
+    {% set showcaseText = "Mais Vendidos" %}
+{% endif %}
+
+{% if showAvailable %}
+    {% if settings.showcase_2 == "top_seller" %}
+    <div id="prognoos_popv1"></div>	
+    
+        {% set products = Products({
+            'filter': showAvailable,
+            'limit': 4,
+            'order': {'quantity_sold': 'desc'}
+        }) %}    
+    
+    {% else %}
+        {% set products = Products({
+            'filter': [showAvailable, settings.showcase_2],
+            'limit': 4,
+            'order': 'rand'
+        }) %}
+    {% endif %}
+    
+{% else %}
+    {% if settings.showcase_2 == "top_seller" %}
+    <div id="prognoos_popv1"></div>
+    
+        {% set products = Products({
+            'filter': available,
+            'limit': limitProducts,
+            'order': {'quantity_sold': 'desc'}
+        }) %}      
+    {% else %}
+        {% set products = Products({
+            'filter': settings.showcase_2,
+            'limit': limitProducts,
+            'order': 'rand'
+        }) %}
+    {% endif %}
+{% endif %}
+
+{% element 'showcase-best-sellers' { 
+    "products": products,
+    "showcaseTitle": showcaseText
+} %}
+
+{% if settings.showcase_3 == "featured" %}
+    {% set showcaseText = "Destaques" %}
+{% elseif settings.showcase_3 == "new" %}
+    {% set showcaseText = "Lançamentos" %}
+{% elseif settings.showcase_3 == "free_shipping" %}
+    {% set showcaseText = "Frete Grátis" %}
+{% elseif settings.showcase_3 == "promotion" %}
+    {% set showcaseText = "Promoções" %}
+{% elseif settings.showcase_3 == "top_seller" %}
+    {% set showcaseText = "Mais Vendidos" %}
+{% endif %}
+
+{% if showAvailable %}
+    {% if settings.showcase_3 == "top_seller" %}
+    <div id="prognoos_popv1"></div>	
+    
+        {% set products = Products({
+            'filter': showAvailable,
+            'limit': limitProducts,
+            'order': {'quantity_sold': 'desc'}
+        }) %}    
+    
+    {% else %}
+        {% set products = Products({
+            'filter': [showAvailable, settings.showcase_3],
+            'limit': limitProducts,
+            'order': 'rand'
+        }) %}
+    {% endif %}
+    
+{% else %}
+    {% if settings.showcase_3 == "top_seller" %}
+    <div id="prognoos_popv1"></div>
+    
+        {% set products = Products({
+            'filter': available,
+            'limit': limitProducts,
+            'order': {'quantity_sold': 'desc'}
+        }) %}      
+    {% else %}
+        {% set products = Products({
+            'filter': settings.showcase_3,
+            'limit': limitProducts,
+            'order': 'rand'
+        }) %}
+    {% endif %}
+{% endif %}
+
+{% element 'showcase' { 
+    "products": products,
+    "showcaseTitle": showcaseText,
+    "showcaseCarousel": "s-carousel promotion"
+} %}
+
+{% if banner.bottom %}
+    <div class="banner banner-bottom {% if not settings.enable_banner_default %}mobile-off{% endif %}">
+        {{ banner.bottom }}
+    </div>
+{% endif %}
+
+{% if pages.current == 'home' %}
+	{{ banner.popup ~ banner.floating }}
+{% endif %}

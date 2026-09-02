@@ -1,0 +1,273 @@
+.product-1{
+    background: #fff;
+    display: block;
+    padding: 15px;
+    position: relative;
+    
+    &:before{
+        background: #fff;
+        content: '';
+        position: absolute;
+        z-index: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border: 2px solid transparent;
+        @extend .transition;
+    }
+    
+    &:hover{
+        
+        &:before{
+            border-color: #e42754;
+        }
+        
+        .product-buttons{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+        
+    a,
+    a:hover
+    a:focus,
+    a:active{
+        position: relative;
+        outline: none;
+        text-decoration: none;
+        z-index: 1;
+    }
+    
+    .product-image{
+        position: relative;
+        background: #f5f5f5;
+        font-size: 0;
+        overflow: hidden;
+        margin-bottom: 15px;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;  
+        -ms-flex-pack: center;
+        
+        @media screen and (max-width: $sm){
+            margin-bottom: 7px;
+            height: 180px;
+        }
+        
+        img{
+            max-height: 100%;
+            max-width: 99%;
+            vertical-align: middle;
+            @include prefix('transition', '300ms all ease 0s');
+            
+            @media screen and (max-width: $sm){
+                max-height: 180px;
+            }
+        }
+        
+        .discount{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.4rem;            
+            opacity: .9;
+        }        
+    }
+    
+    .product-name{
+        color: #3d4445;
+        display: block;
+        height: 65px;
+        margin-bottom: 25px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        
+        @include typo(2rem, 300, $font, 2.2rem);
+        
+        @media screen and (max-width: $sm){
+            height: 50px;
+            @include typo(1.7rem, 400, $font, 1.7rem);
+        }
+    }
+
+    .product-discount-recursive-tag{
+        background: #3d4445;
+        text-align: center;
+        border-radius: 2px;
+        padding:10px 10px; 
+        border: none;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 2px;
+    }
+    .product-discount-recursive-desc{
+        background: #626262;
+        text-align: center;
+        border-radius: 2px;
+        padding:10px 10px; 
+        border: none;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 26px;
+    } 
+
+    .pricing{
+        font-size: 15px;
+        color: #aaa;
+        padding: 5%;
+        text-align: center;
+    }
+    
+    .product-price{
+        color: #434343;
+        display: block;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        
+        @include typo(1.5rem, 700, $font, 1.8rem);
+        
+        @media screen and (max-width: $sm){
+            @include typo(1.2rem, 700, $font, 1.3rem);
+        }
+        
+        // .price{
+        //     color: #aaa;
+        //     font-size: 1.2rem;
+        //     font-weight: 400;
+        //     left: 0;
+        //     position: absolute;
+        //     text-decoration: line-through;
+        //     top: -18px;
+        //     width: 100%;
+        // }
+        
+        // .price-offer{
+        //     display: inline-block;
+
+        
+        
+        .price-off{
+            display: inline-block;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 2.6rem;
+            
+            @media screen and (max-width: $sm){
+                @include typo(1.7rem, 700, $font, 1.7rem);
+            }            
+        }
+        
+        .price-various{
+            display: none;
+        }
+        
+        .price-before {
+            color: #7d7a7a;
+            font-size: 1.5rem;
+            left: 0;
+            position: absolute;
+            text-decoration: line-through;
+            top: -17px;
+            width: 100%;
+            
+            &.strike{ text-decoration: line-through; }
+        }           
+    }
+    
+    .product-payment{
+        color: #434343;
+        display: block;
+        margin-bottom: 15px;
+        min-height: 42px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        
+        @include typo(1.2rem, 400, $font, 1.4rem);
+        
+        @media screen and (max-width: $sm){
+            margin-bottom: 7px;
+        }
+        
+        > br:first-child{
+            display: none;
+        }
+        
+        span,
+        strong{
+            color: #434343;
+            @include typo(1.2rem, 400, $font, 1.4rem);
+            
+            @media screen and (max-width: $sm){
+                @include typo(1rem, 400, $font, 1rem);
+            }
+        }
+    }
+    
+    .product-buttons{  
+        bottom: -20px;
+        height: 40px;
+        left: calc(50% - 32.5%);
+        opacity: 0;
+        position: absolute;
+        visibility: hidden;
+        width: 65%;
+        z-index: 1;
+        
+        @extend .transition;
+        
+        a{  
+            background: #e42754;
+            color: #fff;
+            display: block;
+            height: 40px;
+            letter-spacing: 2px;
+            overflow: hidden;
+            text-align: center;
+            text-transform: uppercase;
+            @include typo(1.5rem, 400, $font, 4rem);
+            @include prefix('transition', '600ms all ease 0s');
+            
+            @media screen and (max-width: $sm){
+                letter-spacing: 1px;
+                @include typo(1.2rem, 400, $font, 4rem);
+            }
+            
+            span{
+                display: inline-block;
+                margin-right: 0;
+                vertical-align: top;
+            }
+        }
+        
+        @media screen and (max-width: $sm){
+            left: calc(50% - 40%);
+            width: 80%;
+        }
+    }
+    
+    .compare-buttons{
+        position: relative; 
+        z-index: 10;
+    }
+}

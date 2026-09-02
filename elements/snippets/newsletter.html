@@ -1,0 +1,11 @@
+<section class="newsletter newsletter-1" data-tray-tst="newsletter_box">
+    <input type="hidden" name="loja" value="{{ store.id }}">  
+    <h2 class="newsletter-title">Gostou de nossa loja?</h2>
+    <span>Cadastre-se e receba nossas novidades e promoções em seu e-mail</span> 
+    <form action="{{ links.newsletter }}" method="post" name="newsletter" data-tray-tst="newsletter_form">
+        <button class="pull-right" data-tray-tst="newsletter_cadastrar">Enviar</button>
+        <div>
+            <input name="email" type="email" placeholder="Seu e-mail" data-tray-tst="newsletter_email" required>
+        </div>
+    </form>
+</section>

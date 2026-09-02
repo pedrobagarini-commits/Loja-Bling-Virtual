@@ -1,0 +1,71 @@
+.cart-1{
+    color: #e42754;
+    display: block;
+    padding: 37px 0;
+    position: relative;
+    
+    @media screen and (max-width: $sm){
+        padding: 10px 0;
+    }
+    
+    &:hover{
+        color: #e42754;
+        text-decoration: none;
+    }
+    
+    .cart-icon{
+        height: 43px;
+        padding: 0 0;
+        text-align: center;
+        width: 43px;
+        
+        @media screen and (max-width: $sm){
+            background: #dbdbdb;
+            border-radius: 5px;
+            height: 40px;
+            padding: 9px 0;
+            width: 40px; 
+        }
+        
+        svg{
+            fill: #e42754;
+            
+            @media screen and (max-width: $sm){
+                height: 25px;
+            }
+            
+        }
+    }
+    
+    .cart-info{
+        overflow: hidden;
+        
+        b{
+            border-bottom: 1px solid #e42754;
+            color: #e42754;
+            display: block;
+            padding-left: 15px;
+            text-align: center;
+            @include typo(1.7rem, 300, $font, 2.2rem);
+        }
+    }
+    
+    .cart-total{
+        padding: 0;
+        text-align: center;
+        @include typo(1.8rem, 700, $font, 2.2rem);
+    }
+    
+    .cart-amount{
+        background: #434343;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.2rem;
+        height: 20px;
+        left: 25px;
+        line-height: 20px;
+        position: absolute;
+        text-align: center;
+        width: 20px;
+    }
+}

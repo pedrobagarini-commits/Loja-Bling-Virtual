@@ -1,0 +1,45 @@
+.customer-1{
+    background: #e42754;
+    color: #fff;
+    @include typo(1.5rem, 300, $font, 1.7rem);
+    padding: 12px 0;
+    text-transform: none;
+    
+    a{
+        color: #fff;
+    }
+    
+    svg{
+        display: inline-block;
+        margin: 0 8px 0 0;
+        vertical-align: middle;
+        fill: #fff;
+    }
+    
+    .login{
+        @media screen and (max-width: $sm){
+            display: none;
+        }
+    }
+    
+    .orders{
+        text-align: right;
+        
+        @media screen and (max-width: $sm){
+            text-align: left;
+        }
+        
+        > *{
+            color: #fff;
+            display: inline-block;
+            margin-right: 15px;
+            padding-right: 15px;
+            
+            @media screen and (max-width: $sm){
+                margin: 0;
+                padding: 4px 0;
+                width: 100%;
+            }
+        }
+    }
+}
