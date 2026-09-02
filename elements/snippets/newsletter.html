@@ -1,11 +1,18 @@
 <section class="newsletter newsletter-1" data-tray-tst="newsletter_box">
-    <input type="hidden" name="loja" value="{{ store.id }}">  
-    <h2 class="newsletter-title">Gostou de nossa loja?</h2>
-    <span>Cadastre-se e receba nossas novidades e promoções em seu e-mail</span> 
+    <input type="hidden" name="loja" value="{{ store.id }}">
+
+    {% set newsTitle = settings.newsletter_title ? settings.newsletter_title : 'Receba novidades e ofertas' %}
+    {% set newsText  = settings.newsletter_text  ? settings.newsletter_text  : 'Cadastre seu e-mail e seja o primeiro a saber das promoções e dos lançamentos da loja.' %}
+
+    <div class="bl-news__text">
+        <h2 class="newsletter-title">{{ newsTitle }}</h2>
+        <span>{{ newsText }}</span>
+    </div>
+
     <form action="{{ links.newsletter }}" method="post" name="newsletter" data-tray-tst="newsletter_form">
-        <button class="pull-right" data-tray-tst="newsletter_cadastrar">Enviar</button>
         <div>
-            <input name="email" type="email" placeholder="Seu e-mail" data-tray-tst="newsletter_email" required>
+            <input name="email" type="email" placeholder="Seu melhor e-mail" aria-label="Seu melhor e-mail" data-tray-tst="newsletter_email" required>
         </div>
+        <button type="submit" class="pull-right" data-tray-tst="newsletter_cadastrar">Cadastrar</button>
     </form>
 </section>

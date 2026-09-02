@@ -1,0 +1,47 @@
+{#
+    Grade de categorias
+    Monta cartões a partir das categorias reais da loja (variavel `categories`),
+    então acompanha automaticamente o cadastro feito no Bling. Usa a imagem da
+    categoria quando existir e, na falta dela, a inicial do nome.
+    Quantidade exibida: settings.catgrid_limit (padrão 12).
+#}
+{% if settings.enable_category_grid and categories|length > 0 %}
+
+    {# + 0 força o valor do painel (texto) a ser tratado como número na comparação abaixo #}
+    {% set catLimit = settings.catgrid_limit ? settings.catgrid_limit + 0 : 12 %}
+    {% set catTitle = settings.catgrid_title ? settings.catgrid_title : 'Navegue por categoria' %}
+    {% set catKicker = settings.catgrid_kicker ? settings.catgrid_kicker : 'Encontre mais rápido' %}
+
+    <section class="bl-section bl-section--tint bl-catgrid" aria-label="{{ catTitle }}">
+        <div class="container">
+
+            <div class="bl-section-head">
+                <div class="bl-section-head__text">
+                    <span class="bl-section-head__kicker">{{ catKicker }}</span>
+                    <h2 class="bl-section-head__title">{{ catTitle }}</h2>
+                </div>
+            </div>
+
+            <ul class="bl-catgrid__list">
+                {% for level1 in categories %}
+                    {% if loop.index <= catLimit %}
+                        <li class="bl-catgrid__item">
+                            <a href="{{ level1.link }}" class="bl-catgrid__link" data-tray-tst="categoria_lvl_1">
+                                <span class="bl-catgrid__thumb">
+                                    {% if level1.image %}
+                                        <img src="{{ level1.image }}" alt="{{ level1.name }}" loading="lazy">
+                                    {% else %}
+                                        <span class="bl-catgrid__initial" aria-hidden="true">{{ level1.name|slice(0,1)|upper }}</span>
+                                    {% endif %}
+                                </span>
+                                <span class="bl-catgrid__name">{{ level1.name }}</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+        </div>
+    </section>
+
+{% endif %}

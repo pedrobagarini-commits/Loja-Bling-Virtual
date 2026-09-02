@@ -54,23 +54,36 @@
     {% endif %}
 {% endif %}
 
-{% element 'showcase' { 
+{% element 'showcase' {
     "products": products,
     "showcaseTitle": showcaseText,
+    "showcaseKicker": "Selecionados para você",
+    "showcaseLink": settings.showcase_1_link,
     "showcaseCarousel": "s-carousel"
 } %}
- 
+
+{# Atalhos por categoria, montados a partir do cadastro real da loja #}
+{% element 'category-grid' %}
+
 {% if not utils.is_mobile and banner.extra4 %}
-    <div class="banners banner-widget-home">
-        {{ banner.extra4 }} 
-    </div> 
+    <div class="bl-section">
+        <div class="container">
+            <div class="banners banner-widget-home bl-promo__grid">
+                {{ banner.extra4 }}
+            </div>
+        </div>
+    </div>
 {% elseif utils.is_mobile and banner.extra9 %}
     {% if settings.enable_banner_default %}
-        <div class="banners banner-widget-home">
-            {{ banner.extra9 }} 
+        <div class="bl-section">
+            <div class="container">
+                <div class="banners banner-widget-home bl-promo__grid">
+                    {{ banner.extra9 }}
+                </div>
+            </div>
         </div>
-    {% endif %} 
-{% endif %} 
+    {% endif %}
+{% endif %}
 
 {% if settings.showcase_2 == "featured" %}
     {% set showcaseText = "Destaques" %}
@@ -120,10 +133,15 @@
     {% endif %}
 {% endif %}
 
-{% element 'showcase-best-sellers' { 
+{% element 'showcase-best-sellers' {
     "products": products,
-    "showcaseTitle": showcaseText
+    "showcaseTitle": showcaseText,
+    "showcaseKicker": "A preferência de quem já comprou",
+    "showcaseLink": settings.showcase_2_link
 } %}
+
+{# Explica o fluxo de compra em quatro passos #}
+{% element 'how-it-works' %}
 
 {% if settings.showcase_3 == "featured" %}
     {% set showcaseText = "Destaques" %}
@@ -173,15 +191,21 @@
     {% endif %}
 {% endif %}
 
-{% element 'showcase' { 
+{% element 'showcase' {
     "products": products,
     "showcaseTitle": showcaseText,
+    "showcaseKicker": "Aproveite enquanto durar",
+    "showcaseLink": settings.showcase_3_link,
     "showcaseCarousel": "s-carousel promotion"
 } %}
 
 {% if banner.bottom %}
-    <div class="banner banner-bottom {% if not settings.enable_banner_default %}mobile-off{% endif %}">
-        {{ banner.bottom }}
+    <div class="bl-section">
+        <div class="container">
+            <div class="banner banner-bottom {% if not settings.enable_banner_default %}mobile-off{% endif %}">
+                {{ banner.bottom }}
+            </div>
+        </div>
     </div>
 {% endif %}
 

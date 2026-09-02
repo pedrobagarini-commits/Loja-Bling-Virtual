@@ -2,9 +2,10 @@
     <ul class="level1" data-tray-tst="categoria">
         
         {% if categories|length > 6 %}
-        <li class="item-level1 col-sm-2">
-            <a href="javascript:void(0)" class="link-level1">
-                <span>+ Categorias</span>
+        <li class="item-level1 col-sm-2 bl-nav-all">
+            <a href="javascript:void(0)" class="link-level1" aria-haspopup="true">
+                <span class="bl-nav-all__icon" aria-hidden="true"><i></i></span>
+                <span>Todas as categorias</span>
             </a>
             <ul class="level2">
                 {% for level1 in categories %}

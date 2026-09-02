@@ -1052,6 +1052,211 @@
                 </article>
             </section>
 
+            <!-- Secoes da home (camada de personalizacao) -->
+            <section id="home-sections" class="editor-section">
+                <h2 class="editor-section-title">Seções da Home</h2>
+
+                <article class="editor-main">
+                    <ul class="uk-flex-center" uk-tab>
+                        <li class="uk-active"><a href="">Vantagens</a></li>
+                        <li class=""><a href="">Categorias</a></li>
+                        <li class=""><a href="">Como funciona</a></li>
+                        <li class=""><a href="">Textos e links</a></li>
+                    </ul>
+                    <ul class="uk-switcher uk-margin">
+
+                        <!-- Faixa de vantagens -->
+                        <li uk-switcher-item="0">
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Faixa de vantagens</legend>
+                                <p class="uk-text-meta">Aparece logo abaixo do banner principal. Deixe um título em branco para ocultar aquele item.</p>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-padding-small uk-width-1-1">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Exibir faixa de vantagens</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="enable_benefits" name="enable_benefits" class="check-switcher">
+                                                        <label for="enable_benefits" class="green"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 1 - título</label>
+                                        <input name="benefit_1_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 1 - descrição</label>
+                                        <input name="benefit_1_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 2 - título</label>
+                                        <input name="benefit_2_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 2 - descrição</label>
+                                        <input name="benefit_2_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 3 - título</label>
+                                        <input name="benefit_3_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 3 - descrição</label>
+                                        <input name="benefit_3_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 4 - título</label>
+                                        <input name="benefit_4_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vantagem 4 - descrição</label>
+                                        <input name="benefit_4_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+
+                        <!-- Grade de categorias -->
+                        <li uk-switcher-item="1">
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Grade de categorias</legend>
+                                <p class="uk-text-meta">Os cartões são montados automaticamente a partir das categorias cadastradas na loja.</p>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-padding-small uk-width-1-1">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Exibir grade de categorias</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="enable_category_grid" name="enable_category_grid" class="check-switcher">
+                                                        <label for="enable_category_grid" class="green"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Chapéu (texto pequeno acima do título)</label>
+                                        <input name="catgrid_kicker" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Título da seção</label>
+                                        <input name="catgrid_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Quantas categorias exibir</label>
+                                        <input name="catgrid_limit" class="form-control" type="text" placeholder="12">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+
+                        <!-- Como funciona -->
+                        <li uk-switcher-item="2">
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Como funciona</legend>
+                                <p class="uk-text-meta">Quatro passos que explicam ao cliente o fluxo de compra da loja.</p>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-padding-small uk-width-1-1">
+                                        <div class="editor-item">
+                                            <div class="editor-field change">
+                                                <div class="editor-label">
+                                                    <h5 class="editor-switcher-title">Exibir seção "Como funciona"</h5>
+                                                    <div class="switcher">
+                                                        <input type="checkbox" id="enable_steps" name="enable_steps" class="check-switcher">
+                                                        <label for="enable_steps" class="green"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Chapéu (texto pequeno acima do título)</label>
+                                        <input name="steps_kicker" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Título da seção</label>
+                                        <input name="steps_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 1 - título</label>
+                                        <input name="step_1_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 1 - descrição</label>
+                                        <input name="step_1_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 2 - título</label>
+                                        <input name="step_2_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 2 - descrição</label>
+                                        <input name="step_2_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 3 - título</label>
+                                        <input name="step_3_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 3 - descrição</label>
+                                        <input name="step_3_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 4 - título</label>
+                                        <input name="step_4_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Passo 4 - descrição</label>
+                                        <input name="step_4_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+
+                        <!-- Textos e links -->
+                        <li uk-switcher-item="3">
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Newsletter</legend>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Título da newsletter</label>
+                                        <input name="newsletter_title" class="form-control" type="text" placeholder="">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Texto de apoio</label>
+                                        <input name="newsletter_text" class="form-control" type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Link "Ver todos" das vitrines</legend>
+                                <p class="uk-text-meta">Cole o endereço da categoria que cada vitrine deve abrir. Em branco, o link não aparece.</p>
+                                <div class="uk-flex-wrap uk-flex uk-child-width-auto">
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vitrine 1 - URL do "Ver todos"</label>
+                                        <input name="showcase_1_link" class="form-control" type="text" placeholder="https://">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vitrine 2 - URL do "Ver todos"</label>
+                                        <input name="showcase_2_link" class="form-control" type="text" placeholder="https://">
+                                    </div>
+                                    <div class="uk-width-medium uk-margin-left uk-margin-bottom">
+                                        <label>Vitrine 3 - URL do "Ver todos"</label>
+                                        <input name="showcase_3_link" class="form-control" type="text" placeholder="https://">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </li>
+
+                    </ul>
+                </article>
+            </section>
+
             <!-- Newsletter -->
             <section id="showcase" class="editor-section">
                 <h2 class="editor-section-title">Newsletter</h2>

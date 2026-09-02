@@ -1,0 +1,57 @@
+{#
+    Como funciona
+    Explica o processo de compra em quatro passos. Todos os textos são
+    editáveis no painel (Configurações > Home > Como funciona), para que a
+    loja descreva o próprio fluxo sem precisar mexer no código do tema.
+#}
+{% if settings.enable_steps %}
+
+    {% set stTitle  = settings.steps_title  ? settings.steps_title  : 'Como funciona' %}
+    {% set stKicker = settings.steps_kicker ? settings.steps_kicker : 'Simples do início ao fim' %}
+
+    {% set s1t = settings.step_1_title ? settings.step_1_title : 'Escolha o produto' %}
+    {% set s1d = settings.step_1_text  ? settings.step_1_text  : 'Navegue pelas categorias e selecione as opções que atendem ao seu projeto.' %}
+    {% set s2t = settings.step_2_title ? settings.step_2_title : 'Personalize o pedido' %}
+    {% set s2d = settings.step_2_text  ? settings.step_2_text  : 'Defina quantidade e variações disponíveis e confira o valor na hora.' %}
+    {% set s3t = settings.step_3_title ? settings.step_3_title : 'Finalize a compra' %}
+    {% set s3d = settings.step_3_text  ? settings.step_3_text  : 'Pague com cartão, Pix ou boleto em um checkout seguro.' %}
+    {% set s4t = settings.step_4_title ? settings.step_4_title : 'Acompanhe a entrega' %}
+    {% set s4d = settings.step_4_text  ? settings.step_4_text  : 'Você recebe o código de rastreio e acompanha cada etapa do envio.' %}
+
+    <section class="bl-section bl-section--tint bl-steps" aria-label="{{ stTitle }}">
+        <div class="container">
+
+            <div class="bl-section-head">
+                <div class="bl-section-head__text">
+                    <span class="bl-section-head__kicker">{{ stKicker }}</span>
+                    <h2 class="bl-section-head__title">{{ stTitle }}</h2>
+                </div>
+            </div>
+
+            <ol class="bl-steps__list">
+                <li class="bl-steps__item">
+                    <span class="bl-steps__num" aria-hidden="true">1</span>
+                    <h3 class="bl-steps__title">{{ s1t }}</h3>
+                    <p class="bl-steps__text">{{ s1d }}</p>
+                </li>
+                <li class="bl-steps__item">
+                    <span class="bl-steps__num" aria-hidden="true">2</span>
+                    <h3 class="bl-steps__title">{{ s2t }}</h3>
+                    <p class="bl-steps__text">{{ s2d }}</p>
+                </li>
+                <li class="bl-steps__item">
+                    <span class="bl-steps__num" aria-hidden="true">3</span>
+                    <h3 class="bl-steps__title">{{ s3t }}</h3>
+                    <p class="bl-steps__text">{{ s3d }}</p>
+                </li>
+                <li class="bl-steps__item">
+                    <span class="bl-steps__num" aria-hidden="true">4</span>
+                    <h3 class="bl-steps__title">{{ s4t }}</h3>
+                    <p class="bl-steps__text">{{ s4d }}</p>
+                </li>
+            </ol>
+
+        </div>
+    </section>
+
+{% endif %}

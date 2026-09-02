@@ -1,0 +1,66 @@
+{#
+    Faixa de vantagens
+    Quatro chamadas curtas logo abaixo do banner principal, com textos
+    editáveis no painel (Configurações > Home > Faixa de vantagens).
+    Se a faixa for desativada no painel, nada é renderizado.
+#}
+{% if settings.enable_benefits %}
+
+    {% set b1t = settings.benefit_1_title ? settings.benefit_1_title : 'Entrega para todo o Brasil' %}
+    {% set b1d = settings.benefit_1_text  ? settings.benefit_1_text  : 'Prazos e valores calculados no carrinho' %}
+    {% set b2t = settings.benefit_2_title ? settings.benefit_2_title : 'Compra 100% segura' %}
+    {% set b2d = settings.benefit_2_text  ? settings.benefit_2_text  : 'Ambiente protegido e dados criptografados' %}
+    {% set b3t = settings.benefit_3_title ? settings.benefit_3_title : 'Parcele em até 12x' %}
+    {% set b3d = settings.benefit_3_text  ? settings.benefit_3_text  : 'Nos principais cartões de crédito' %}
+    {% set b4t = settings.benefit_4_title ? settings.benefit_4_title : 'Atendimento especializado' %}
+    {% set b4d = settings.benefit_4_text  ? settings.benefit_4_text  : 'Fale com a nossa equipe antes de fechar o pedido' %}
+
+    <section class="bl-benefits" aria-label="Vantagens da loja">
+        <div class="container">
+            <ul class="bl-benefits__list">
+
+                <li class="bl-benefits__item">
+                    <span class="bl-benefits__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v2h3.2a1 1 0 0 1 .8.4l2.8 3.7a1 1 0 0 1 .2.6V17a1 1 0 0 1-1 1h-1.1a3 3 0 0 1-5.8 0H9.9a3 3 0 0 1-5.8 0H4a1 1 0 0 1-1-1V6Zm11 4v6h.1a3 3 0 0 1 5.8 0h.1v-2.9L17.7 10H14ZM7 16.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0Zm9.5-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg>
+                    </span>
+                    <span>
+                        <strong class="bl-benefits__title">{{ b1t }}</strong>
+                        <span class="bl-benefits__text">{{ b1d }}</span>
+                    </span>
+                </li>
+
+                <li class="bl-benefits__item">
+                    <span class="bl-benefits__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.2 4.5 5.1v6c0 4.4 3 8.5 7.5 10.7 4.5-2.2 7.5-6.3 7.5-10.7v-6L12 2.2Zm3.9 7-4.6 4.7a1 1 0 0 1-1.4 0L7.6 11.6a1 1 0 1 1 1.4-1.4l1.6 1.6 3.9-3.9a1 1 0 1 1 1.4 1.4Z"/></svg>
+                    </span>
+                    <span>
+                        <strong class="bl-benefits__title">{{ b2t }}</strong>
+                        <span class="bl-benefits__text">{{ b2d }}</span>
+                    </span>
+                </li>
+
+                <li class="bl-benefits__item">
+                    <span class="bl-benefits__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1H3V7Zm18 3v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7h18Zm-4 5a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2Z"/></svg>
+                    </span>
+                    <span>
+                        <strong class="bl-benefits__title">{{ b3t }}</strong>
+                        <span class="bl-benefits__text">{{ b3d }}</span>
+                    </span>
+                </li>
+
+                <li class="bl-benefits__item">
+                    <span class="bl-benefits__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8v4.5A2.5 2.5 0 0 0 6.5 17H8a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6v-1a6 6 0 1 1 12 0v1h-2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1.9a2.5 2.5 0 0 1-2.4 1.8H13a1 1 0 1 0 0 2h2.5A4.5 4.5 0 0 0 20 17.3V10a8 8 0 0 0-8-8Z"/></svg>
+                    </span>
+                    <span>
+                        <strong class="bl-benefits__title">{{ b4t }}</strong>
+                        <span class="bl-benefits__text">{{ b4d }}</span>
+                    </span>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+
+{% endif %}

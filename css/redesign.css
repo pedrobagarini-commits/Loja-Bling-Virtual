@@ -1,0 +1,1672 @@
+/* ==========================================================================
+   REDESIGN — Camada de personalizacao da loja
+   --------------------------------------------------------------------------
+   Carregada DEPOIS de theme.min.css e custom.css. Nao substitui o tema:
+   apenas sobrescreve a aparencia, preservando marcacao, classes, atributos
+   data-tray-tst e todo o comportamento JS original da Tray/Bling.
+
+   As cores vem das variaveis definidas em css/custom.css.html, que por sua
+   vez leem o painel de configuracoes do tema.
+
+   Sumario
+     01. Fundacoes (reset suave, tipografia, container, botoes)
+     02. Barra de utilidades (topo)
+     03. Cabecalho + busca + carrinho
+     04. Menu de categorias (desktop e mobile)
+     05. Banner principal
+     06. Faixa de vantagens
+     07. Grade de categorias
+     08. Vitrines e cartao de produto
+     09. Banners promocionais
+     10. Como funciona
+     11. Newsletter
+     12. Rodape
+     13. Paginas internas (catalogo, produto, carrinho, conta)
+     14. Ajustes responsivos finais
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. FUNDACOES
+   ========================================================================== */
+
+body{
+    background: var(--bl-white);
+    color: var(--bl-text);
+    font-family: var(--bl-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body, p, li, a, span, div, td, th, label, input, select, textarea, button{
+    font-family: var(--bl-font);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--bl-font);
+    color: var(--bl-deep);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    /* o tema original aplica uppercase em todos os titulos; aqui voltamos
+       ao caixa normal, que le melhor em titulos longos */
+    text-transform: none;
+}
+
+a{ color: var(--bl-blue); }
+a:hover, a:focus{ color: var(--bl-deep); text-decoration: none; }
+
+/* Foco visivel — acessibilidade preservada em toda a loja */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+    outline: 3px solid rgba(62,102,150,.45);
+    outline-offset: 2px;
+}
+
+img{ max-width: 100%; }
+
+/* Container um pouco mais largo, no espirito das lojas modernas */
+@media (min-width: 1200px){
+    .container{ width: 1240px; }
+}
+
+/* Botoes utilitarios da camada de redesign */
+.bl-btn{
+    display: inline-block;
+    border: 0;
+    border-radius: var(--bl-radius-sm);
+    padding: 13px 26px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition: 200ms all ease;
+}
+.bl-btn--gold{ background: var(--bl-gold); color: var(--bl-deep); }
+.bl-btn--gold:hover, .bl-btn--gold:focus{ background: var(--bl-deep); color: var(--bl-gold); }
+.bl-btn--deep{ background: var(--bl-deep); color: var(--bl-white); }
+.bl-btn--deep:hover, .bl-btn--deep:focus{ background: var(--bl-blue); color: var(--bl-white); }
+.bl-btn--ghost{
+    background: transparent;
+    color: var(--bl-deep);
+    box-shadow: inset 0 0 0 2px var(--bl-line);
+}
+.bl-btn--ghost:hover, .bl-btn--ghost:focus{
+    box-shadow: inset 0 0 0 2px var(--bl-blue);
+    color: var(--bl-blue);
+}
+
+/* Cabecalho padrao de secao, reutilizado em toda a home */
+.bl-section-head{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 24px;
+}
+.bl-section-head__text{ min-width: 0; }
+.bl-section-head__kicker{
+    display: block;
+    margin: 0 0 6px;
+    color: var(--bl-blue);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+.bl-section-head__title{
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--bl-deep);
+}
+.bl-section-head__link{
+    flex: none;
+    color: var(--bl-blue);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.bl-section-head__link:hover{ color: var(--bl-deep); }
+
+.bl-section{ padding: 48px 0; }
+.bl-section--tint{ background: var(--bl-bg); }
+
+@media (max-width: 767px){
+    .bl-section{ padding: 32px 0; }
+    .bl-section-head{ margin-bottom: 18px; }
+    .bl-section-head__title{ font-size: 21px; }
+    .bl-section-head__link{ font-size: 13px; }
+}
+
+
+/* ==========================================================================
+   02. BARRA DE UTILIDADES (TOPO)
+   ========================================================================== */
+
+.customer.customer-1{
+    background: var(--bl-deep);
+    color: rgba(255,255,255,.82);
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+    border: 0;
+}
+.customer.customer-1 .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 40px;
+}
+.customer.customer-1 .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    gap: 20px;
+}
+.customer.customer-1 .login,
+.customer.customer-1 .orders{
+    float: none;
+    width: auto;
+    padding: 0;
+}
+.customer.customer-1 .login{
+    color: rgba(255,255,255,.82);
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.customer.customer-1 .orders{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    text-align: right;
+}
+.customer.customer-1 .orders > span,
+.customer.customer-1 .orders > a{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255,255,255,.82);
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+}
+.customer.customer-1 .orders > a:hover,
+.customer.customer-1 .orders span a:hover{ color: var(--bl-gold); }
+.customer.customer-1 .orders span a{ color: var(--bl-white); font-weight: 600; }
+.customer.customer-1 svg{ fill: var(--bl-gold); flex: none; }
+
+@media (max-width: 991px){
+    .customer.customer-1 .login{ display: none; }
+    .customer.customer-1 .orders{ justify-content: center; width: 100%; }
+}
+@media (max-width: 767px){
+    .customer.customer-1{ display: none; }
+}
+
+
+/* ==========================================================================
+   03. CABECALHO + BUSCA + CARRINHO
+   ========================================================================== */
+
+header{
+    background: var(--bl-white);
+    border-bottom: 1px solid var(--bl-line-2);
+}
+header > .container{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+header > .container > [class*="col-"]{
+    float: none;
+    padding: 0;
+    width: auto;
+}
+header > .container > .col-sm-3{ flex: none; }
+header > .container > .col-sm-5,
+header > .container > .col-md-6{ flex: 1 1 auto; min-width: 0; }
+header > .container > .col-sm-4,
+header > .container > .col-md-3{ flex: none; }
+
+/* Logotipo mais contido — o tema original reservava 120px de altura */
+.site-logo{
+    height: 62px;
+    margin: 0;
+    text-align: left;
+}
+.site-logo:before{ height: 62px; }
+.site-logo img{ max-height: 62px; }
+
+/* --- Busca: elemento dominante do cabecalho --- */
+.search.search-1{ position: relative; min-width: 200px; }
+.search.search-1 form{
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    background: var(--bl-white);
+    border: 2px solid var(--bl-line);
+    border-radius: 999px;
+    overflow: hidden;
+    transition: 200ms all ease;
+}
+.search.search-1 form:focus-within{
+    border-color: var(--bl-blue);
+    box-shadow: 0 0 0 4px rgba(62,102,150,.12);
+}
+.search.search-1 form > div{
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    order: 1;
+}
+.search.search-1 .search-key{
+    width: 100%;
+    height: 46px;
+    border: 0;
+    background: transparent;
+    padding: 0 8px 0 22px;
+    color: var(--bl-deep);
+    font-size: 15px;
+    box-shadow: none;
+}
+.search.search-1 .search-key::placeholder{ color: var(--bl-faint); }
+.search.search-1 .search-key:focus{ outline: none; box-shadow: none; }
+.search.search-1 .search-button{
+    flex: none;
+    float: none !important;
+    order: 2;               /* o botao vem antes no HTML; volta para a direita */
+    width: 54px;
+    height: 46px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--bl-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 200ms all ease;
+}
+.search.search-1 .search-button:hover{ background: var(--bl-deep); }
+.search.search-1 .search-button svg{ fill: var(--bl-deep); width: 18px; height: 18px; }
+.search.search-1 .search-button:hover svg{ fill: var(--bl-gold); }
+
+/* Sugestoes de busca da Tray */
+.suggestion{
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    box-shadow: var(--bl-shadow-md);
+    overflow: hidden;
+}
+
+/* --- Bloco de ajuda ao lado do carrinho --- */
+.bl-header-help{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 20px;
+    margin-right: 20px;
+    border-right: 1px solid var(--bl-line-2);
+    color: var(--bl-deep);
+}
+.bl-header-help svg{ fill: var(--bl-blue); flex: none; }
+.bl-header-help__label{
+    display: block;
+    color: var(--bl-muted);
+    font-size: 11px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 600;
+}
+.bl-header-help__value{
+    display: block;
+    color: var(--bl-deep);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.bl-header-actions{ display: flex; align-items: center; justify-content: flex-end; }
+
+/* --- Carrinho --- */
+.cart.cart-1{
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--bl-bg);
+    color: var(--bl-deep);
+    transition: 200ms all ease;
+}
+.cart.cart-1:hover{ background: var(--bl-bg-alt); color: var(--bl-deep); }
+.cart.cart-1 .cart-icon{
+    float: none !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.cart.cart-1 .cart-icon svg{ width: 24px; height: 26px; fill: var(--bl-deep); }
+.cart.cart-1 .cart-amount{
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    left: auto;
+    z-index: 2;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--bl-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart.cart-1 .cart-amount span{
+    color: var(--bl-deep);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+}
+.cart.cart-1 .cart-info{ line-height: 1.3; }
+.cart.cart-1 .cart-info b{
+    display: block;
+    border: 0 !important;
+    color: var(--bl-muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+.cart.cart-1 .cart-info > div{ margin: 0; }
+.cart.cart-1 .cart-total{
+    float: none;
+    width: auto;
+    padding: 0;
+    color: var(--bl-deep);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+/* --- Cabecalho flutuante (aparece no scroll) --- */
+header.floating{ height: auto; }
+header.floating.fixed{
+    border-bottom: 1px solid var(--bl-line-2);
+    box-shadow: var(--bl-shadow-md);
+}
+header.floating .site-logo,
+header.floating .site-logo:before{ height: 48px; }
+header.floating .site-logo img{ max-height: 48px; }
+header.floating > .container{ padding-top: 10px; padding-bottom: 10px; }
+header.floating .search-1,
+header.floating .cart-1{ padding-top: 0; padding-bottom: 0; }
+
+/* --- Cabecalho em tablet ---
+   Entre 768px e 991px o logo, a busca, o bloco de atendimento e o carrinho nao
+   cabem na mesma linha e a busca era esmagada. Aqui o bloco de atendimento sai
+   de cena e a busca ganha uma linha inteira. */
+@media (max-width: 1199px){
+    .bl-header-help{
+        padding-right: 0;
+        margin-right: 14px;
+        border-right: 0;
+    }
+    .bl-header-help span:not([class]){ display: none; }
+}
+@media (max-width: 991px){
+    .bl-header-help{ display: none; }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    header > .container{ flex-wrap: wrap; row-gap: 12px; }
+    header > .container > .col-sm-3{ order: 1; }
+    header > .container > .col-sm-4,
+    header > .container > .col-md-3{ order: 2; margin-left: auto; }
+    header > .container > .col-sm-5,
+    header > .container > .col-md-6{ order: 3; flex: 1 0 100%; }
+}
+
+/* Menu de categorias em telas medias: menos itens e menos respiro, para os
+   rotulos continuarem legiveis em vez de virarem reticencias. */
+@media (max-width: 1199px){
+    .horizontal-nav .link-level1{ padding: 0 13px; }
+    .horizontal-nav .link-level1 span{ padding-right: 14px; }
+}
+@media (max-width: 991px){
+    .horizontal-nav .item-level1:nth-child(n+5){ display: none; }
+}
+
+/* --- Cabecalho mobile --- */
+@media (max-width: 767px){
+    header > .container{
+        display: block;
+        padding: 12px 15px 0;
+    }
+    header > .container > .col-xs-12{ width: 100%; }
+    .site-logo{ height: 46px; text-align: center; }
+    .site-logo:before{ height: 46px; }
+    .site-logo img{ max-height: 46px; }
+
+    /* .visible-xs-block do Bootstrap traz display:block !important, por isso
+       o !important aqui e necessario para a barra virar flex. */
+    .wrapper-nav{
+        display: flex !important;
+        align-items: center;
+        gap: 10px;
+        margin: 10px -15px 0;
+        padding: 8px 12px;
+        background: var(--bl-deep) !important;
+    }
+    .wrapper-nav > [class*="col-"]{
+        float: none;
+        padding: 0;
+        width: auto;
+    }
+    .wrapper-nav > .col-xs-8{ flex: 1 1 auto; min-width: 0; }
+    .trigger-menu{ padding: 8px 4px; }
+    .trigger-menu svg{ fill: var(--bl-white) !important; }
+    .wrapper-nav .search.search-1 form{ border-color: transparent; }
+    .wrapper-nav .search.search-1 .search-key{ height: 40px; font-size: 14px; }
+    .wrapper-nav .search.search-1 .search-button{ height: 40px; width: 46px; }
+    .wrapp-cart .cart.cart-1{
+        background: transparent;
+        padding: 8px 0 8px 8px;
+    }
+    .wrapp-cart .cart.cart-1 .cart-icon{
+        background: transparent;   /* o tema pinta um quadrado cinza aqui */
+        border-radius: 0;
+        width: auto;
+        height: auto;
+    }
+    .wrapp-cart .cart.cart-1 .cart-icon svg{ fill: var(--bl-white); }
+    .bl-header-help{ display: none; }
+}
+
+
+/* ==========================================================================
+   04. MENU DE CATEGORIAS
+   ========================================================================== */
+
+.nav-full{
+    background: var(--bl-blue);
+    border: 0;
+    position: relative;
+    z-index: 30;
+}
+
+.horizontal-nav{ position: relative; z-index: 30; }
+.horizontal-nav .level1{
+    display: flex;
+    align-items: stretch;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+}
+.horizontal-nav .item-level1{
+    float: none;
+    width: auto;
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 0;
+    height: 48px;
+}
+.horizontal-nav .item-level1:hover{ background: rgba(0,0,0,.12); }
+
+.horizontal-nav .link-level1{
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 18px;
+    font-size: 0;
+    text-align: left;
+}
+.horizontal-nav .link-level1:before{ display: none; }
+.horizontal-nav .link-level1 span{
+    display: block;
+    max-width: 100%;
+    padding-right: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--bl-white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.horizontal-nav .item-level1:hover .link-level1 span{ color: var(--bl-gold); }
+.horizontal-nav .link-level1 span:after{
+    border-top-color: currentColor;
+    right: 2px;
+    opacity: .75;
+}
+
+/* Item "Todas as categorias" — porta de entrada do menu */
+.horizontal-nav .item-level1.bl-nav-all{
+    background: var(--bl-deep);
+    flex: none;
+}
+.horizontal-nav .item-level1.bl-nav-all:hover{ background: var(--bl-deep); }
+.horizontal-nav .bl-nav-all .link-level1{ gap: 10px; }
+.horizontal-nav .bl-nav-all .link-level1 span{ color: var(--bl-white); }
+.horizontal-nav .bl-nav-all:hover .link-level1 span{ color: var(--bl-gold); }
+.horizontal-nav .bl-nav-all .bl-nav-all__icon{
+    display: block;
+    width: 16px;
+    flex: none;
+    padding: 0;
+}
+.horizontal-nav .bl-nav-all .bl-nav-all__icon:after{ display: none; }
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i,
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i:before,
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i:after{
+    display: block;
+    height: 2px;
+    width: 16px;
+    background: currentColor;
+    border-radius: 2px;
+    position: relative;
+    color: inherit;
+}
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i:before,
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i:after{
+    content: '';
+    position: absolute;
+    left: 0;
+}
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i:before{ top: -5px; }
+.horizontal-nav .bl-nav-all .bl-nav-all__icon i:after{ top: 5px; }
+
+/* Submenus em cartao */
+.horizontal-nav .level2,
+.horizontal-nav .level3,
+.horizontal-nav .level4{
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line-2);
+    border-bottom: 3px solid var(--bl-gold);
+    border-radius: 0 0 var(--bl-radius) var(--bl-radius);
+    box-shadow: var(--bl-shadow-md);
+    padding: 8px 0;
+    min-width: 240px;
+}
+.horizontal-nav .level3,
+.horizontal-nav .level4{ border-radius: var(--bl-radius); top: -9px; }
+
+.horizontal-nav .link-level2,
+.horizontal-nav .link-level3,
+.horizontal-nav .link-level4{
+    padding: 10px 22px;
+    color: var(--bl-text);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+    transition: 150ms all ease;
+}
+.horizontal-nav .item-level2:hover > .link-level2,
+.horizontal-nav .item-level3:hover > .link-level3,
+.horizontal-nav .link-level2:hover,
+.horizontal-nav .link-level3:hover,
+.horizontal-nav .link-level4:hover{
+    background: var(--bl-bg);
+    color: var(--bl-blue);
+    box-shadow: inset 3px 0 0 var(--bl-gold);
+}
+
+/* --- Menu mobile off-canvas --- */
+.menu-mobile{
+    background: var(--bl-white);
+    box-shadow: var(--bl-shadow-lg);
+}
+.menu-mobile h5{
+    background: var(--bl-deep);
+    color: var(--bl-white);
+    margin: 0;
+    padding: 18px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+.menu-mobile .link-level1,
+.menu-mobile .link-level2,
+.menu-mobile .link-level3{
+    color: var(--bl-text);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--bl-line-2);
+}
+.menu-mobile .link-level1{ font-weight: 600; }
+.menu-mobile .level2 .link-level2{ background: var(--bl-bg); }
+.menu-mobile-backdrop{ background: rgba(15,42,54,.55); }
+
+
+/* ==========================================================================
+   05. BANNER PRINCIPAL
+   ========================================================================== */
+
+.banner-home{
+    background: var(--bl-white);
+    position: relative;
+}
+.banner-home .banner-home-slide{ line-height: 0; }
+.banner-home img{ width: 100%; }
+
+.banner-home .slick-arrow{
+    width: 44px;
+    height: 44px;
+    padding: 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.92);
+    box-shadow: var(--bl-shadow-md);
+    fill: var(--bl-deep);
+    transition: 200ms all ease;
+}
+.banner-home .slick-arrow:hover{ background: var(--bl-gold); fill: var(--bl-deep); }
+.banner-home .slick-arrow.arrow-prev{ left: 18px; }
+.banner-home .slick-arrow.arrow-next{ right: 18px; }
+
+.banner-home .slick-dots{ bottom: 16px; }
+.banner-home .slick-dots li{
+    width: auto;
+    height: auto;
+    margin: 0 5px;
+    background: none;
+}
+.banner-home .slick-dots button{
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255,255,255,.6);
+    transition: 200ms all ease;
+}
+.banner-home .slick-dots .slick-active button{
+    width: 26px;
+    background: var(--bl-gold);
+}
+
+/* Banner regua logo abaixo do carrossel */
+.banner-ruler{ margin-top: 0; }
+.banner-ruler img{ width: 100%; }
+
+@media (max-width: 767px){
+    .banner-home .slick-dots{ bottom: 8px; }
+    .banner-home .slick-dots button{ width: 8px; height: 8px; }
+    .banner-home .slick-dots .slick-active button{ width: 20px; }
+}
+
+
+/* ==========================================================================
+   06. FAIXA DE VANTAGENS
+   ========================================================================== */
+
+.bl-benefits{
+    background: var(--bl-white);
+    border-bottom: 1px solid var(--bl-line-2);
+}
+.bl-benefits__list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.bl-benefits__item{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 20px;
+    border-left: 1px solid var(--bl-line-2);
+}
+.bl-benefits__item:first-child{ border-left: 0; padding-left: 0; }
+.bl-benefits__icon{
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: var(--bl-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bl-benefits__icon svg{ width: 22px; height: 22px; fill: var(--bl-blue); }
+.bl-benefits__title{
+    display: block;
+    color: var(--bl-deep);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.bl-benefits__text{
+    display: block;
+    margin-top: 3px;
+    color: var(--bl-muted);
+    font-size: 12.5px;
+    line-height: 1.4;
+}
+
+@media (max-width: 991px){
+    .bl-benefits__list{ grid-template-columns: repeat(2, 1fr); }
+    .bl-benefits__item{ padding: 18px 14px; }
+    .bl-benefits__item:nth-child(odd){ border-left: 0; padding-left: 0; }
+    .bl-benefits__item:nth-child(n+3){ border-top: 1px solid var(--bl-line-2); }
+}
+@media (max-width: 480px){
+    .bl-benefits__item{ gap: 10px; }
+    .bl-benefits__icon{ width: 36px; height: 36px; }
+    .bl-benefits__icon svg{ width: 18px; height: 18px; }
+    .bl-benefits__title{ font-size: 13px; }
+    .bl-benefits__text{ font-size: 11.5px; }
+}
+
+
+/* ==========================================================================
+   07. GRADE DE CATEGORIAS
+   ========================================================================== */
+
+.bl-catgrid__list{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.bl-catgrid__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    height: 100%;
+    padding: 22px 12px;
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line-2);
+    border-radius: var(--bl-radius);
+    text-align: center;
+    transition: 200ms all ease;
+}
+.bl-catgrid__link:hover{
+    border-color: var(--bl-blue);
+    box-shadow: var(--bl-shadow-md);
+    transform: translateY(-3px);
+}
+.bl-catgrid__thumb{
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    background: var(--bl-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.bl-catgrid__thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.bl-catgrid__initial{
+    color: var(--bl-blue);
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+}
+.bl-catgrid__link:hover .bl-catgrid__thumb{ background: var(--bl-gold); }
+.bl-catgrid__link:hover .bl-catgrid__initial{ color: var(--bl-deep); }
+.bl-catgrid__name{
+    color: var(--bl-deep);
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+@media (max-width: 1199px){ .bl-catgrid__list{ grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 767px){
+    .bl-catgrid__list{ grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .bl-catgrid__link{ padding: 16px 8px; gap: 9px; }
+    .bl-catgrid__thumb{ width: 56px; height: 56px; }
+    .bl-catgrid__initial{ font-size: 20px; }
+    .bl-catgrid__name{ font-size: 12px; }
+}
+@media (max-width: 400px){ .bl-catgrid__list{ grid-template-columns: repeat(2, 1fr); } }
+
+
+/* ==========================================================================
+   08. VITRINES E CARTAO DE PRODUTO
+   ========================================================================== */
+
+.showcase{
+    background: transparent;
+    margin-top: 0;
+    padding: 48px 0;
+}
+.showcase + .showcase{ padding-top: 0; }
+.showcase.bl-showcase--tint{ background: var(--bl-bg); }
+
+/* Titulo antigo (script decorativo + ornamentos) neutralizado.
+   A home passa a usar .bl-section-head; este bloco cobre as vitrines
+   remanescentes de outras paginas do tema. */
+.showcase .title{
+    padding: 0 0 24px;
+    text-align: left;
+}
+.showcase .title > svg{ display: none; }
+.showcase .title strong{
+    display: block;
+    margin: 0;
+    color: var(--bl-deep);
+    font-family: var(--bl-font);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* O tema zera o padding de .page-content .container (base.scss). Restauramos
+   o respiro apenas nas secoes da home, sem mexer nas demais paginas. */
+.showcase > .container,
+.bl-section > .container{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.showcase .product-list{ margin: 0; padding: 0; list-style: none; }
+.showcase .product-list > li{ padding: 0 8px; }
+
+/* Vitrine sem carrossel (banner lateral + produtos).
+   O tema montava esta area com floats e um clear:left inline, o que abria um
+   vazio grande a direita. Um grid resolve sem depender de float: o banner
+   ocupa 2 colunas x 2 linhas e os quatro produtos preenchem o 2x2 ao lado. */
+.showcase.best-sellers > .container > ul{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.showcase.best-sellers > .container > ul > li{
+    float: none !important;
+    clear: none !important;   /* neutraliza o style="clear:left" inline do tema */
+    width: auto !important;
+    padding: 0;
+    min-width: 0;
+}
+.showcase.best-sellers > .container > ul > li.col-sm-3{ grid-column: span 1; }
+.showcase.best-sellers > .container > ul > li.col-sm-6{ grid-column: span 2; }
+/* o primeiro banner acompanha a altura das duas linhas de produtos */
+.showcase.best-sellers > .container > ul > li.col-sm-6:first-child{ grid-row: span 2; }
+/* O banner lateral e enviado pela loja e pode ter qualquer proporcao.
+   `contain` garante que a arte apareca inteira, sem corte, centralizada
+   sobre um fundo neutro quando as proporcoes nao baterem. */
+.showcase.best-sellers > .container > ul > li.col-sm-6 a{
+    display: block;
+    height: 100%;
+    background: var(--bl-bg);
+    border-radius: var(--bl-radius);
+    overflow: hidden;
+}
+.showcase.best-sellers > .container > ul > li.col-sm-6 img{
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 767px){
+    .showcase.best-sellers > .container > ul{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .showcase.best-sellers > .container > ul > li.col-sm-6,
+    .showcase.best-sellers > .container > ul > li.col-sm-6:first-child{
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+    .showcase.best-sellers > .container > ul > li.col-sm-6 img{ height: auto; }
+}
+
+/* Setas e paginacao do carrossel de produtos */
+.showcase .slick-list{ padding-bottom: 8px; }
+.showcase .slick-arrow{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background-color: var(--bl-white);
+    background-size: 9px auto;
+    border: 1px solid var(--bl-line);
+    box-shadow: var(--bl-shadow);
+    transition: 200ms all ease;
+}
+.showcase .slick-arrow:hover{ border-color: var(--bl-blue); box-shadow: var(--bl-shadow-md); }
+.showcase .slick-arrow.slick-next{ right: -14px; }
+.showcase .slick-arrow.slick-prev{ left: -14px; }
+.showcase .slick-dots{ padding: 20px 0 0; }
+.showcase .slick-dots li{
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    border-radius: 999px;
+    background: var(--bl-line);
+}
+.showcase .slick-dots li.slick-active{ width: 22px; background: var(--bl-gold); }
+
+/* --- Cartao de produto --- */
+.product.product-1{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 14px;
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line-2);
+    border-radius: var(--bl-radius);
+    transition: 200ms all ease;
+}
+.product.product-1:hover{
+    border-color: var(--bl-line);
+    box-shadow: var(--bl-shadow-md);
+    transform: translateY(-3px);
+}
+/* A borda-fantasma do tema original e substituida pela borda real do cartao */
+.product.product-1:before{ display: none; }
+.product.product-1:hover:before{ border-color: transparent; }
+
+.product.product-1 > a{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.product.product-1 .product-image{
+    height: 210px;
+    margin-bottom: 14px;
+    padding: 8px;
+    background: var(--bl-white);
+    border-radius: var(--bl-radius-sm);
+}
+.product.product-1 .product-image img{
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+.product.product-1:hover .product-image img{ transform: scale(1.04); }
+
+.product.product-1 .product-image .discount{
+    top: 8px;
+    left: 8px;
+    right: auto;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: var(--bl-gold);
+    color: var(--bl-deep);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .01em;
+    opacity: 1;
+}
+
+.product.product-1 .product-name{
+    height: auto;
+    min-height: 40px;
+    max-height: 40px;
+    margin-bottom: 10px;
+    color: var(--bl-deep);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product.product-1 .product-price{
+    margin-top: auto;
+    padding-top: 4px;
+    text-align: left;
+}
+.product.product-1 .product-price .price-before{
+    position: static;
+    display: block;
+    margin-bottom: 2px;
+    color: var(--bl-faint);
+    font-size: 12.5px;
+    font-weight: 500;
+}
+.product.product-1 .product-price .price-off,
+.product.product-1 .product-price .price-offer{
+    color: var(--bl-deep);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+.product.product-1 .product-payment{
+    min-height: 0;
+    margin: 6px 0 12px;
+    text-align: left;
+}
+.product.product-1 .product-payment,
+.product.product-1 .product-payment span,
+.product.product-1 .product-payment strong{
+    color: var(--bl-muted);
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+.product.product-1 .pricing{ padding: 0; text-align: left; }
+
+.product.product-1 .product-discount-recursive-tag{
+    background: var(--bl-blue);
+    border-radius: var(--bl-radius-sm);
+    font-size: 12px;
+    padding: 7px 10px;
+}
+.product.product-1 .product-discount-recursive-desc{
+    background: var(--bl-bg);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-muted);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    padding: 7px 10px;
+}
+
+/* Botao sempre visivel — o tema original so o exibia no hover,
+   deixando-o inalcancavel em telas de toque. */
+.product.product-1 .product-buttons{
+    position: static;
+    width: 100%;
+    height: auto;
+    left: auto;
+    bottom: auto;
+    margin-top: auto;
+    opacity: 1;
+    visibility: visible;
+}
+.product.product-1 .product-buttons a{
+    height: auto;
+    padding: 12px 10px;
+    border-radius: var(--bl-radius-sm);
+    background: var(--bl-gold);
+    color: var(--bl-deep);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: none;
+    cursor: pointer;
+}
+.product.product-1 .product-buttons a:hover{ background: var(--bl-deep); color: var(--bl-gold); }
+
+.product.product-1 .compare-buttons{
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--bl-muted);
+}
+
+@media (max-width: 767px){
+    .showcase{ padding: 32px 0; }
+    .showcase .title{ padding-bottom: 18px; }
+    .showcase .title strong{ font-size: 21px; }
+    .product.product-1{ padding: 10px; }
+    .product.product-1 .product-image{ height: 148px; margin-bottom: 10px; }
+    .product.product-1 .product-name{ font-size: 13px; min-height: 36px; max-height: 36px; }
+    .product.product-1 .product-price .price-off,
+    .product.product-1 .product-price .price-offer{ font-size: 18px; }
+    .product.product-1 .product-buttons a{ padding: 10px 8px; font-size: 13px; }
+    .showcase .slick-arrow.slick-next{ right: -6px; }
+    .showcase .slick-arrow.slick-prev{ left: -6px; }
+}
+
+
+/* ==========================================================================
+   09. BANNERS PROMOCIONAIS
+   ========================================================================== */
+
+.banners.banner-widget-home{ margin: 0; }
+.bl-promo__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+.banner-widget-home img,
+.banner-bottom img{
+    width: 100%;
+    border-radius: var(--bl-radius);
+}
+.banner-widget-home a,
+.banner-bottom a{
+    display: block;
+    overflow: hidden;
+    border-radius: var(--bl-radius);
+    transition: 200ms all ease;
+}
+.banner-widget-home a:hover,
+.banner-bottom a:hover{ box-shadow: var(--bl-shadow-md); transform: translateY(-2px); }
+
+/* Banners laterais dentro da vitrine "mais vendidos" */
+.showcase.best-sellers img{ border-radius: var(--bl-radius); }
+
+
+/* ==========================================================================
+   10. COMO FUNCIONA
+   ========================================================================== */
+
+.bl-steps__list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: bl-step;
+}
+.bl-steps__item{
+    position: relative;
+    padding: 26px 22px;
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line-2);
+    border-radius: var(--bl-radius);
+}
+.bl-steps__num{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 14px;
+    border-radius: 999px;
+    background: var(--bl-deep);
+    color: var(--bl-gold);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+}
+.bl-steps__title{
+    margin: 0 0 6px;
+    color: var(--bl-deep);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.bl-steps__text{
+    margin: 0;
+    color: var(--bl-muted);
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+
+@media (max-width: 991px){ .bl-steps__list{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){
+    .bl-steps__list{ grid-template-columns: 1fr; gap: 12px; }
+    .bl-steps__item{ padding: 20px 18px; }
+}
+
+
+/* ==========================================================================
+   11. NEWSLETTER
+   ========================================================================== */
+
+.news-full{
+    background-image: none !important;
+    background-color: var(--bl-deep) !important;
+    border: 0 !important;
+    padding: 44px 0;
+}
+.newsletter.newsletter-1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 22px;
+    padding: 0;
+    text-align: left;
+}
+.newsletter.newsletter-1 .bl-news__text{ flex: 1 1 340px; min-width: 0; }
+.newsletter.newsletter-1 h2,
+.newsletter.newsletter-1 .newsletter-title{
+    margin: 0 0 6px;
+    color: var(--bl-white) !important;
+    font-family: var(--bl-font);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+.newsletter.newsletter-1 > span,
+.newsletter.newsletter-1 .bl-news__text span{
+    display: block;
+    color: rgba(255,255,255,.75) !important;
+    font-size: 14.5px;
+    line-height: 1.5;
+}
+.newsletter.newsletter-1 form{
+    flex: 1 1 380px;
+    display: flex;
+    align-items: stretch;
+    max-width: 520px;
+    margin: 0;
+    background: var(--bl-white);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.newsletter.newsletter-1 form > div{ flex: 1 1 auto; min-width: 0; }
+.newsletter.newsletter-1 form div input{
+    width: 100%;
+    height: 50px;
+    padding: 0 10px 0 22px;
+    border: 0 !important;
+    background: transparent;
+    color: var(--bl-deep);
+    font-size: 15px;
+    box-shadow: none;
+}
+.newsletter.newsletter-1 form div input::placeholder{ color: var(--bl-faint); }
+.newsletter.newsletter-1 form button{
+    flex: none;
+    float: none !important;
+    height: 50px;
+    margin: 0;
+    padding: 0 30px;
+    border: 0;
+    border-radius: 0;
+    background: var(--bl-gold) !important;
+    color: var(--bl-deep) !important;
+    font-size: 15px;
+    font-weight: 700;
+    transition: 200ms all ease;
+}
+.newsletter.newsletter-1 form button:hover{
+    background: var(--bl-blue) !important;
+    color: var(--bl-white) !important;
+}
+
+@media (max-width: 767px){
+    .news-full{ padding: 30px 0; }
+    .newsletter.newsletter-1{ gap: 16px; }
+    .newsletter.newsletter-1 h2,
+    .newsletter.newsletter-1 .newsletter-title{ font-size: 19px; }
+    .newsletter.newsletter-1 form{ max-width: none; }
+    .newsletter.newsletter-1 form div input{ height: 46px; padding-left: 18px; font-size: 14px; }
+    .newsletter.newsletter-1 form button{ height: 46px; padding: 0 20px; font-size: 14px; }
+}
+
+
+/* ==========================================================================
+   12. RODAPE
+   ========================================================================== */
+
+footer{ background: var(--bl-white); }
+
+/* Avaliacoes e nuvem de tags acima do rodape */
+.foo-rating,
+.tagcloud{
+    padding: 40px 0;
+    text-align: center;
+}
+.foo-rating h4,
+.tagcloud h4{
+    margin: 0 0 6px;
+    color: var(--bl-blue);
+    font-family: var(--bl-font);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+.foo-rating > h3,
+.tagcloud > h3{
+    margin: 0 0 22px;
+    color: var(--bl-deep) !important;
+    font-family: var(--bl-font);
+    font-size: 26px;
+    font-weight: 800;
+}
+.tagcloud a{
+    display: inline-block;
+    margin: 0 4px 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--bl-bg);
+    color: var(--bl-muted) !important;
+    font-size: 13px !important;
+    font-weight: 500;
+    transition: 150ms all ease;
+}
+.tagcloud a:hover{ background: var(--bl-blue); color: var(--bl-white) !important; }
+.foo-rating .dep_link a{
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: var(--bl-radius-sm);
+    background: var(--bl-deep) !important;
+    color: var(--bl-white);
+    font-size: 14px;
+    font-weight: 700;
+}
+.foo-rating .dep_link a:hover{ background: var(--bl-blue) !important; }
+
+/* Corpo do rodape */
+.foo-content{
+    background-color: var(--bl-deep) !important;
+    border: 0 !important;
+    padding: 46px 0 10px;
+}
+.foo-content > .container{ border: 0 !important; }
+.foo-content h3{
+    margin: 0 0 16px;
+    color: var(--bl-white) !important;
+    font-family: var(--bl-font);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.foo-content h5{ color: var(--bl-white) !important; }
+.foo-content a,
+.foo-content p,
+.foo-content li{
+    color: rgba(255,255,255,.72) !important;
+    font-size: 14px;
+    line-height: 1.65;
+}
+.foo-content a:hover{ color: var(--bl-gold) !important; }
+.foo-content .links-list{ margin: 0; padding: 0; list-style: none; }
+.foo-content .links-list li{ margin-bottom: 8px; }
+
+.foo-contact ul{ margin: 0; padding: 0; list-style: none; }
+.foo-contact li{
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 14px;
+}
+.foo-contact i{ flex: none; line-height: 0; margin-top: 2px; }
+.foo-contact i svg{ fill: var(--bl-gold) !important; width: 18px; height: 18px; }
+.foo-contact p{ margin: 0; }
+
+.foo-seals{ margin: 0; padding: 0; list-style: none; }
+.foo-seals li{
+    display: inline-block;
+    float: none !important;
+    margin: 0 10px 12px 0;
+    vertical-align: middle;
+}
+.payment-gateways img{
+    background: var(--bl-white);
+    border-radius: 4px;
+    padding: 2px;
+    margin: 0 6px 8px 0;
+}
+
+/* Redes sociais */
+.foo-social{
+    background-color: var(--bl-deep) !important;
+    padding: 8px 0 30px;
+    text-align: center;
+}
+.foo-social h3{
+    margin: 0 0 16px;
+    color: rgba(255,255,255,.72) !important;
+    font-family: var(--bl-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: none;
+}
+.foo-social .social-icon{
+    width: auto;
+    float: none;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0;
+}
+.foo-social .social-icon a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.10);
+    transition: 200ms all ease;
+}
+.foo-social .social-icon a:hover{ background: var(--bl-gold); }
+.foo-social svg{ fill: var(--bl-white) !important; width: 19px; height: 19px; }
+.foo-social .social-icon a:hover svg{ fill: var(--bl-deep) !important; }
+.foo-social .icon-x{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0 !important;
+}
+
+/* Barra legal */
+.foo-message{
+    background-color: var(--bl-deep) !important;
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding: 18px 0;
+}
+.foo-message .message-footer{
+    display: block;
+    color: rgba(255,255,255,.6) !important;
+    font-size: 12.5px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@media (max-width: 767px){
+    .foo-content{ padding: 30px 0 6px; }
+    .foo-content [class*="col-"]{ margin-bottom: 26px; }
+    .foo-rating, .tagcloud{ padding: 28px 0; }
+    .foo-rating > h3, .tagcloud > h3{ font-size: 21px; }
+}
+
+
+/* ==========================================================================
+   13. PAGINAS INTERNAS
+   ========================================================================== */
+
+.site-main.container{ padding-top: 26px; padding-bottom: 46px; }
+
+/* Migalhas */
+.breadcrumbs, .breadcrumb{
+    margin-bottom: 18px;
+    padding: 0;
+    background: transparent;
+    font-size: 13px;
+}
+.breadcrumbs a, .breadcrumb a{ color: var(--bl-muted); }
+.breadcrumbs a:hover, .breadcrumb a:hover{ color: var(--bl-blue); }
+
+/* Titulos de listagem */
+.page-catalog h1, .page-search h1,
+.page-content > h1{
+    margin: 0 0 18px;
+    color: var(--bl-deep);
+    font-size: 26px;
+    font-weight: 800;
+}
+
+/* Filtros */
+.filters-list, .smart-filter, .new-smart-filter{
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line-2);
+    border-radius: var(--bl-radius);
+}
+.open-filters{
+    border-radius: var(--bl-radius-sm);
+    background: var(--bl-deep);
+    color: var(--bl-white);
+    font-weight: 700;
+}
+
+/* Paginacao */
+.pagination > li > a,
+.pagination > li > span,
+#linksPag a, #linksPag span{
+    border-radius: var(--bl-radius-sm) !important;
+    border-color: var(--bl-line) !important;
+    color: var(--bl-deep) !important;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+#linksPag .pageON{
+    background: var(--bl-deep) !important;
+    border-color: var(--bl-deep) !important;
+    color: var(--bl-white) !important;
+}
+
+/* Pagina de produto */
+.page-product .product-buy-button,
+.page-product #comprar a,
+.page-product .buy-button{
+    background: var(--bl-gold) !important;
+    border: 0 !important;
+    border-radius: var(--bl-radius-sm) !important;
+    color: var(--bl-deep) !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    transition: 200ms all ease;
+}
+.page-product .product-buy-button:hover,
+.page-product #comprar a:hover{ background: var(--bl-deep) !important; color: var(--bl-gold) !important; }
+
+.page-product #preco .PrecoPrincipal{
+    color: var(--bl-deep) !important;
+    font-weight: 800;
+}
+.page-product .product-tabs #ProdAbas li{
+    background: transparent !important;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+}
+.page-product .product-tabs #ProdAbas li.aberta{
+    border-bottom-color: var(--bl-gold);
+    background: transparent !important;
+}
+.page-product .product-tabs #ProdAbas a{
+    color: var(--bl-muted) !important;
+    font-weight: 600;
+}
+.page-product .product-tabs #ProdAbas li.aberta a{ color: var(--bl-deep) !important; }
+.page-product #cepbox .botao-simular-frete{
+    background: var(--bl-blue) !important;
+    border: 0 !important;
+    border-radius: var(--bl-radius-sm) !important;
+    color: var(--bl-white) !important;
+    font-weight: 700;
+}
+.page-product #botoes > *{
+    border-radius: var(--bl-radius-sm) !important;
+    font-weight: 600;
+}
+.page-product .products-related > h3,
+.page-product .products-visited > h3,
+.page-product .product-cross-sell > h3,
+.related-title{
+    color: var(--bl-deep) !important;
+    font-family: var(--bl-font) !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    margin-bottom: 18px;
+}
+
+/* Formularios em geral (login, cadastro, contato, carrinho) */
+.page-content input[type="text"],
+.page-content input[type="email"],
+.page-content input[type="password"],
+.page-content input[type="tel"],
+.page-content input[type="number"],
+.page-content select,
+.page-content textarea,
+.form-control{
+    border: 1px solid var(--bl-line) !important;
+    border-radius: var(--bl-radius-sm) !important;
+    box-shadow: none !important;
+    color: var(--bl-deep);
+}
+.page-content input:focus,
+.page-content select:focus,
+.page-content textarea:focus,
+.form-control:focus{
+    border-color: var(--bl-blue) !important;
+    box-shadow: 0 0 0 3px rgba(62,102,150,.12) !important;
+}
+
+/* Botoes nativos do tema/Tray */
+.btn-primary,
+.finalizarBT, .botao, .botaoGrande,
+#Page .botao, input[type="submit"].botao{
+    background: var(--bl-deep) !important;
+    border-color: var(--bl-deep) !important;
+    border-radius: var(--bl-radius-sm) !important;
+    color: var(--bl-white) !important;
+    font-weight: 700 !important;
+}
+.btn-primary:hover,
+.finalizarBT:hover, .botao:hover{
+    background: var(--bl-blue) !important;
+    border-color: var(--bl-blue) !important;
+}
+
+/* Menu lateral da central do cliente */
+.sidebar-central .list-group-item.active,
+.sidebar-central a:hover{
+    background: var(--bl-bg);
+    border-color: var(--bl-line-2);
+    color: var(--bl-deep);
+}
+
+/* Mensagens do sistema */
+.messages .alert, .alert{
+    border: 0;
+    border-radius: var(--bl-radius-sm);
+    border-left: 4px solid var(--bl-blue);
+}
+
+
+/* ==========================================================================
+   14. AJUSTES RESPONSIVOS FINAIS
+   ========================================================================== */
+
+/* Evita rolagem horizontal acidental nas grades novas */
+.bl-benefits__list,
+.bl-catgrid__list,
+.bl-steps__list{ max-width: 100%; }
+
+/* Impressao enxuta */
+@media print{
+    .customer, .nav-full, .menu-mobile, .news-full,
+    .foo-social, .bl-benefits, .bl-steps, .banner-home{ display: none !important; }
+    .product.product-1{ border: 1px solid #ccc; box-shadow: none; }
+}
+
+/* Respeita usuarios que preferem menos animacao */
+@media (prefers-reduced-motion: reduce){
+    *, *:before, *:after{
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+    }
+    .product.product-1:hover,
+    .bl-catgrid__link:hover,
+    .banner-widget-home a:hover{ transform: none; }
+}
