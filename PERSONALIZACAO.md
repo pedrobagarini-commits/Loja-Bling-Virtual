@@ -140,6 +140,28 @@ Ajustes feitos porque afetavam o uso real da loja:
 3. Publique o tema e depois abra **Personalizar** para revisar a nova aba
    *Seções da Home*.
 
+### Como gerar o ZIP
+
+O importador do Bling recusa o pacote com *"A estrutura do arquivo ZIP é
+inválida"* quando o arquivo contém **entradas de diretório**. O ZIP exportado
+pela própria Tray só tem entradas de arquivo. Gere assim:
+
+```bash
+# -D  não grava entradas de diretório
+# -X  não grava atributos extras do sistema de arquivos
+zip -r -D -X tema.zip configs css elements img js layouts pages
+```
+
+Confira antes de enviar — a contagem tem de ser zero:
+
+```bash
+unzip -Z1 tema.zip | grep -c '/$'
+```
+
+No Windows, o "Enviar para → Pasta compactada" do Explorer grava entradas de
+diretório e o Bling recusa. Use o 7-Zip selecionando as sete pastas (não a
+pasta que as contém) ou o comando acima.
+
 Se preferir aplicar aos poucos, o mínimo necessário é: enviar
 `css/redesign.css`, `css/custom.css.html` e `layouts/default.html`. As demais
 alterações são incrementais e podem ir depois.
