@@ -161,6 +161,36 @@ diferença em 9 milhões, só antialiasing de texto).
 Use `--com-extras` se o importador aceitar arquivos novos; é a versão mais
 fácil de manter depois.
 
+### Gerando o pacote a partir do ZIP original (recomendado)
+
+O importador do Bling recusou pacotes montados do zero, mesmo replicando os
+metadados. O caminho mais seguro é **reescrever o ZIP original** trocando só os
+arquivos que mudaram, preservando ordem das entradas e cabeçalhos:
+
+```bash
+python3 build-tema-bling.py                      # monta a árvore em dist/
+python3 patch-tema-zip.py ORIGINAL.zip dist/_tema dist/tema-bling.zip
+```
+
+O `patch-tema-zip.py` copia **byte a byte os dados já comprimidos** das
+entradas que a personalização não tocou e recomprime apenas as alteradas,
+herdando delas todos os campos de cabeçalho. O resultado, conferido contra o
+original:
+
+| | Original | Gerado |
+|---|---|---|
+| Entradas | 106 | 106 |
+| Ordem das entradas | — | idêntica |
+| Campos de cabeçalho diferentes | — | nenhum |
+| Entradas com bytes comprimidos idênticos | — | 95 de 95 não alteradas |
+| Arquivos com conteúdo novo | — | 11 |
+
+Os 11 alterados são: `configs/settings.html`, `configs/settings.json`,
+`css/custom.css.html`, `elements/header.html`, `elements/horizontal-nav.html`,
+`elements/showcase.html`, `elements/showcase-best-sellers.html`,
+`elements/snippets/newsletter.html`, `elements/snippets/search.html`,
+`layouts/default.html` e `pages/home.html`.
+
 ### Detalhes do formato
 
 O importador do Bling recusa o pacote com *"A estrutura do arquivo ZIP é
