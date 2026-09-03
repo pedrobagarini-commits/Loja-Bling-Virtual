@@ -142,6 +142,27 @@ Ajustes feitos porque afetavam o uso real da loja:
 
 ### Como gerar o ZIP
 
+Use o script do repositório, que já replica o formato do pacote exportado pela
+Tray (sem entradas de diretório, tudo *deflated*, `create_version` 6.3,
+`extract_version` 2.0, permissões 0666) e gera `dist/tema-bling.zip`:
+
+```bash
+python3 build-tema-bling.py                 # sem arquivos novos (padrão)
+python3 build-tema-bling.py --com-extras    # mantém os arquivos separados
+```
+
+No modo padrão o script **embute** a personalização nos arquivos que o tema já
+tinha — o CSS vai para o fim de `css/custom.css.html` e as três seções novas
+são coladas nos templates que as chamavam — de modo que o pacote fica com
+exatamente os mesmos 106 nomes de arquivo do tema original, sem nenhum arquivo
+novo. As duas variantes renderizam igual (conferido pixel a pixel: 64 pixels de
+diferença em 9 milhões, só antialiasing de texto).
+
+Use `--com-extras` se o importador aceitar arquivos novos; é a versão mais
+fácil de manter depois.
+
+### Detalhes do formato
+
 O importador do Bling recusa o pacote com *"A estrutura do arquivo ZIP é
 inválida"* quando o arquivo contém **entradas de diretório**. O ZIP exportado
 pela própria Tray só tem entradas de arquivo. Gere assim:
