@@ -1485,15 +1485,18 @@ footer{ background: var(--bl-white); }
 
 .site-main.container{ padding-top: 26px; padding-bottom: 46px; }
 
-/* Migalhas */
-.breadcrumbs, .breadcrumb{
+/* Migalhas (elements/snippets/breadcrumb.html) */
+.breadcrumb{
     margin-bottom: 18px;
     padding: 0;
     background: transparent;
     font-size: 13px;
+    line-height: 1.6;
 }
-.breadcrumbs a, .breadcrumb a{ color: var(--bl-muted); }
-.breadcrumbs a:hover, .breadcrumb a:hover{ color: var(--bl-blue); }
+.breadcrumb .breadcrumb-item a{ color: var(--bl-muted); }
+.breadcrumb .breadcrumb-item a:hover{ color: var(--bl-blue); }
+.breadcrumb .breadcrumb-item:last-child{ color: var(--bl-deep); font-weight: 600; }
+.breadcrumb .icon-breadcrumb{ color: var(--bl-faint); }
 
 /* Titulos de listagem */
 .page-catalog h1, .page-search h1,
@@ -1535,8 +1538,8 @@ footer{ background: var(--bl-white); }
 
 /* Pagina de produto */
 .page-product .product-buy-button,
-.page-product #comprar a,
-.page-product .buy-button{
+.page-product .wrapper-btn-buy .botao-commerce,
+.page-product .wrapper-btn-buy button{
     background: var(--bl-gold) !important;
     border: 0 !important;
     border-radius: var(--bl-radius-sm) !important;
@@ -1548,12 +1551,144 @@ footer{ background: var(--bl-white); }
     transition: 200ms all ease;
 }
 .page-product .product-buy-button:hover,
-.page-product #comprar a:hover{ background: var(--bl-deep) !important; color: var(--bl-gold) !important; }
-
-.page-product #preco .PrecoPrincipal{
-    color: var(--bl-deep) !important;
-    font-weight: 800;
+.page-product .wrapper-btn-buy .botao-commerce:hover,
+.page-product .wrapper-btn-buy button:hover{ background: var(--bl-deep) !important; color: var(--bl-gold) !important; }
+/* estado indisponivel continua legivel, sem o destaque de acao */
+.page-product .botao-nao_indisponivel{
+    background: var(--bl-line) !important;
+    color: var(--bl-muted) !important;
+    border-radius: var(--bl-radius-sm) !important;
 }
+
+/* --- Coluna de compra: hierarquia nome > preco > acao --- */
+
+/* O tema deixa o nome do produto em 2.1rem/400; na pagina de conversao ele
+   precisa ser o primeiro elemento que o cliente le. */
+.page-product .product-name{
+    margin-bottom: 14px;
+    color: var(--bl-deep);
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+@media (max-width: 767px){
+    .page-product .product-name{ font-size: 21px; }
+}
+
+.page-product .product-labels{ margin-bottom: 12px; }
+.page-product .product-labels > *{
+    display: inline-block;
+    margin: 0 6px 6px 0;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--bl-gold);
+    color: var(--bl-deep);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-product .product-details{
+    margin-bottom: 18px;
+    color: var(--bl-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+.page-product .product-details b{ color: var(--bl-deep); }
+
+.page-product #preco{
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--bl-line-2);
+}
+.page-product #preco .precode{
+    display: block;
+    margin-bottom: 2px;
+    font-size: 14px;
+    text-decoration: line-through;
+}
+.page-product #preco .PrecoPrincipal{
+    display: block;
+    height: auto;            /* o tema fixa 45px, o que corta fontes maiores */
+    color: var(--bl-deep) !important;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+/* O tema desenha tracinhos decorativos de 55x3px antes do preco e depois do
+   botao de compra. Com as divisorias reais acima eles viram sujeira visual. */
+.page-product #preco #produto_preco:before,
+.page-product .wrapper-btn-buy:after{ display: none; }
+@media (max-width: 767px){
+    .page-product #preco .PrecoPrincipal{ font-size: 27px; }
+}
+.page-product .produto-economize{
+    display: inline-block;
+    margin: 8px 0 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(31,138,91,.10);
+    color: var(--bl-success) !important;
+    font-size: 12.5px;
+    font-weight: 700;
+}
+.page-product #info_preco{
+    display: block;
+    color: var(--bl-muted) !important;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Seletor de quantidade + botao comprar na mesma linha, com respiro */
+.page-product .wrapper-btn-buy{ margin: 18px 0 6px; }
+.page-product .product-quantity > input{
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-deep);
+    font-weight: 700;
+}
+.page-product .product-quantity > div > span{ border-radius: 3px; }
+
+/* Lista de desejos e uma acao secundaria: contorno, nao bloco escuro */
+.page-product #bloco-add-lista a{
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: var(--bl-radius-sm);
+    background: transparent !important;
+    box-shadow: inset 0 0 0 2px var(--bl-line);
+    color: var(--bl-deep) !important;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+.page-product #bloco-add-lista a:hover{
+    box-shadow: inset 0 0 0 2px var(--bl-blue);
+    color: var(--bl-blue) !important;
+}
+
+/* Simulador de frete */
+.page-product #cepbox{
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--bl-line-2);
+    color: var(--bl-muted);
+}
+.page-product #cepbox .cepbox-text{
+    display: block;
+    margin-bottom: 8px;
+    color: var(--bl-deep);
+    font-size: 14px;
+    font-weight: 600;
+}
+.page-product #cepbox input{
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-deep);
+}
+
+.page-product .product-social{ margin-top: 18px; }
+.page-product .product-social span{ color: var(--bl-muted); font-size: 13px; }
 .page-product .product-tabs #ProdAbas li{
     background: transparent !important;
     border-bottom: 3px solid transparent;
@@ -1597,8 +1732,7 @@ footer{ background: var(--bl-white); }
 .page-content input[type="tel"],
 .page-content input[type="number"],
 .page-content select,
-.page-content textarea,
-.form-control{
+.page-content textarea{
     border: 1px solid var(--bl-line) !important;
     border-radius: var(--bl-radius-sm) !important;
     box-shadow: none !important;
@@ -1606,38 +1740,75 @@ footer{ background: var(--bl-white); }
 }
 .page-content input:focus,
 .page-content select:focus,
-.page-content textarea:focus,
-.form-control:focus{
+.page-content textarea:focus{
     border-color: var(--bl-blue) !important;
     box-shadow: 0 0 0 3px rgba(62,102,150,.12) !important;
 }
 
-/* Botoes nativos do tema/Tray */
-.btn-primary,
-.finalizarBT, .botao, .botaoGrande,
-#Page .botao, input[type="submit"].botao{
+/* Botoes nativos do tema/Tray (nomes conferidos em css/sass/*.scss) */
+.finalizarBT,
+.botao,
+.botao-commerce,
+.comprejunto_botao,
+#Page .botao,
+input[type="submit"].botao{
     background: var(--bl-deep) !important;
     border-color: var(--bl-deep) !important;
     border-radius: var(--bl-radius-sm) !important;
     color: var(--bl-white) !important;
     font-weight: 700 !important;
 }
-.btn-primary:hover,
-.finalizarBT:hover, .botao:hover{
+.finalizarBT:hover,
+.botao:hover,
+.botao-commerce:hover,
+.comprejunto_botao:hover{
     background: var(--bl-blue) !important;
     border-color: var(--bl-blue) !important;
 }
-
-/* Menu lateral da central do cliente */
-.sidebar-central .list-group-item.active,
-.sidebar-central a:hover{
-    background: var(--bl-bg);
-    border-color: var(--bl-line-2);
-    color: var(--bl-deep);
+/* O botao de finalizar compra e a acao principal do carrinho */
+.finalizarBT{
+    background: var(--bl-gold) !important;
+    border-color: var(--bl-gold) !important;
+    color: var(--bl-deep) !important;
+}
+.finalizarBT:hover{
+    background: var(--bl-deep) !important;
+    border-color: var(--bl-deep) !important;
+    color: var(--bl-gold) !important;
 }
 
-/* Mensagens do sistema */
-.messages .alert, .alert{
+/* Menu lateral da central do cliente (elements/sidebar-central.html) */
+.sidebar-central > div{
+    background: var(--bl-white);
+    border: 1px solid var(--bl-line-2);
+    border-radius: var(--bl-radius);
+    padding: 20px;
+}
+.sidebar-central h2{
+    margin: 0 0 16px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--bl-deep);
+}
+.sidebar-central h4{
+    margin: 16px 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--bl-blue);
+}
+.sidebar-central ul{ list-style: none; margin: 0; padding: 0; }
+.sidebar-central a{
+    display: block;
+    padding: 7px 0;
+    color: var(--bl-muted);
+    font-size: 14px;
+}
+.sidebar-central a:hover{ color: var(--bl-deep); }
+
+/* Avisos do sistema */
+.alert{
     border: 0;
     border-radius: var(--bl-radius-sm);
     border-left: 4px solid var(--bl-blue);

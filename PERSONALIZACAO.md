@@ -111,6 +111,26 @@ Ajustes feitos porque afetavam o uso real da loja:
 - **Sem rolagem horizontal** em 360, 414, 768, 992, 1280 e 1440px.
 - **Duas colunas de produto no celular**, em vez de uma.
 
+### Página de produto
+
+- **Hierarquia refeita.** O nome do produto vinha em 2,1rem com peso normal;
+  agora é o primeiro elemento que se lê, seguido de selo, preço grande,
+  economia e parcelamento.
+- **Ações com peso certo.** "Comprar" em amarelo (ação principal), "Adicionar
+  à lista de desejos" com contorno (ação secundária, antes era um bloco cinza
+  escuro), estado indisponível em cinza neutro.
+- **Divisórias reais.** Os tracinhos decorativos de 55×3px antes do preço e
+  depois do botão de compra deram lugar a linhas de seção de largura inteira.
+- **Preço sem corte.** O tema fixava `height: 45px` no preço principal, o que
+  cortaria a fonte maior.
+
+> Os seletores dessa página foram conferidos um a um contra
+> `css/sass/page-product.scss`. Uma primeira versão usava nomes que não existem
+> neste tema (`#comprar`, `.botaoGrande`, `.btn-primary`, `.form-control`,
+> `.breadcrumbs`, `.list-group-item`, `.messages`) e teriam sido regras mortas;
+> foram trocados pelos nomes reais (`.wrapper-btn-buy`, `.botao-commerce`,
+> `.finalizarBT`, `.breadcrumb-item`, `.sidebar-central`, entre outros).
+
 ---
 
 ## 7. Publicando na loja
